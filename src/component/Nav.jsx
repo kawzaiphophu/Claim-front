@@ -14,7 +14,7 @@ function Nav() {
                     <div className="navbar-nav">
                         <Link className="nav-link" to="/claimlist">ClaimList</Link>
                         <Link className="nav-link" to="/formclaim">FormClaim</Link>
-                        <Link className="nav-link disabled" to="/about" tabindex="-1" aria-disabled="true">about</Link>
+                        <Link className="nav-link" to="/about" tabindex="-1" aria-disabled="true">about</Link>
                     </div>
                 </div>
             </div>
