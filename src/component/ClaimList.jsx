@@ -1,7 +1,21 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import Nav from './Nav'
 
+
 function ClaimList() {
+  const [item,setitems] = useState([]);
+
+  useEffect(()=>{
+    fetch("http://localhost:3001/")
+    .then(res=>res.json())
+    .then(
+      (result)=>{
+        setitems(result);
+      }
+    )
+  },[])
+
+
   return (
     <>
       <Nav />
@@ -23,18 +37,21 @@ function ClaimList() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>อัครเดช</td>
-              <td>099999999</td>
-              <td>078888888</td>
-              <td>Mainboard</td>
-              <td>12937890hj1324</td>
-              <td>เปิดไม่ติด</td>
-              <td>บางพลัด</td>
-              <td>25/10/2452</td>
+            {item.map((row)=>(
+              <tr>
+              <th scope="row">{row.id}</th>
+              <td>{row.name}</td>
+              <td>{row.tel}</td>
+              <td>{row.ctel}</td>
+              <td>{row.productName}</td>
+              <td>{row.sn}</td>
+              <td>{row.sym}</td>
+              <td>{row.from}</td>
+              <td>{row.update_at}</td>
               <td>ส่งเคลมเเล้ว</td>
             </tr>
+            ))}
+            
           
           </tbody>
         </table>

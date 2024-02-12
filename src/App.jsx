@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import React from "react"
+import { Routes, Route } from "react-router-dom";
+import Home from"./component/Home"
+import ClaimList from"./component/ClaimList"
+import FormClaim from"./component/FormClaim"
 
 
 
-function App() {
+const App = ()=>{
   return (
-  <header>
-    <nav className="navbar  bg-primary">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">KKawz</a>
-        <a className="navbar-link" href="#">Project</a>
-        <a className="navbar-brand" href="#">about</a>
-      
-      </div>
-
-
-    </nav>
-   test
-  </header>
-  );
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/claimlist" element={<ClaimList />} />
+        {/* <Route path="/formclaim" element={<FormClaim />} /> */}
+      </Routes>
+    </>
+  )
+  
 }
 
 export default App;
