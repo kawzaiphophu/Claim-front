@@ -4,7 +4,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle'
 function Nav() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light fs-2">
+        <nav className="navbar navbar-expand-sm navbar-light bg-light fs-2">
             <div className="container-fluid " >
                 <Link className="navbar-brand fs-1" to="/">KKawz</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,9 @@ function Nav() {
                     </div>
                 </div>
             </div>
+            
         </nav>
+        
     )
 }
 

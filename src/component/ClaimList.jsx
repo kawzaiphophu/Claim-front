@@ -8,15 +8,15 @@ function ClaimList() {
 
   useEffect(() => {
     axios.get("http://localhost:3001/claimlist")
-    .then((response) => {
-      setitems(response.data);
-    })
-    .catch((error) => {
-      console.error('Error fetching data:', error);
-    });
+      .then((response) => {
+        setitems(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
 
   }, [])
-// No. run number
+  // No. run number
   let No = 1
 
   return (
@@ -32,9 +32,9 @@ function ClaimList() {
               <th scope="col" className='w-auto'>ชื่อลูกค้า</th>
               <th scope="col" className='w-auto'>เบอร์โทรติดต่อ</th>
               <th scope="col" className='w-auto' >เบอร์โทรที่สั่งซื้อ</th>
-              <th scope="col" className='w-auto'>สินค้า</th>
-              <th scope="col" className='w-auto'>SN</th>
-              <th scope="col" className='w-auto'>อาการ</th>
+              <th scope="col" className='w-10'>Product</th>
+              {/* <th scope="col" className='w-auto'>SN</th>
+              <th scope="col" className='w-auto'>อาการ</th> */}
               <th scope="col" className='w-auto'>ซื้อจาก</th>
               <th scope="col" className='w-auto'>วันที่</th>
               <th scope="col" className='w-auto'>สถานะการเคลม</th>
@@ -49,13 +49,19 @@ function ClaimList() {
                 <td>{row.name}</td>
                 <td>{row.tel}</td>
                 <td>{row.cTel}</td>
-                <td>{row.nameProduct}</td>
-                <td>{row.sn}</td>
-                <td>{row.symp}</td>
+                {<a className="btn w-100 btn btn-outline-dark" data-bs-toggle="collapse" href= `#${row._id}`  role="button" aria-expanded="false" aria-controls={row._id}>
+                  {row.nameProduct}
+                </a>}
+                    <div className="collapse" id={row._id}>
+                    <div className="card card-body w-100">
+                      SN = {row.sn}
+                      <hr />
+                      อาการ = {row.symp}
+                    </div>
+                    </div>
                 <td>{row.from}</td>
                 <td>{moment(row.update_at).format("DD MMM YY")}</td>
                 <td></td>
-
               </tr>
             ))}
 
