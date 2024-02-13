@@ -14,7 +14,7 @@ const App = ()=>{
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/claimlist" element={<ClaimList />} />
-        {/* <Route path="/formclaim" element={<FormClaim />} /> */}
+        <Route path="/formclaim" element={<FormClaim />} />
       </Routes>
     </>
   )
