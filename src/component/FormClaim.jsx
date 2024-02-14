@@ -67,7 +67,7 @@ function FormClaim() {
     return (
         <>
             <Nav />
-            <div className='container'>
+            <div className='container w-50'>
                 <div className='d-flex justify-content-center' style={{ "margin": "50px" }} >
                     <h1>แบบฟอร์มเคลมสินค้า</h1>
                 </div>
@@ -88,6 +88,7 @@ function FormClaim() {
                             type="text"
                             className={inputClass}
                             id="tel"
+                            placeholder=""
                             onChange={(e) => handleChange("tel", e)} 
                             maxLength={"10"}/>
                         <label for="tel">เบอร์โทรศัพท์</label>

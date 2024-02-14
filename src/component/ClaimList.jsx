@@ -34,6 +34,11 @@ function ClaimList() {
       });
   };
 
+
+  const editItem = (_id)=>{
+  
+  }
+
   // No. run number
   let No = 1
 
@@ -50,9 +55,9 @@ function ClaimList() {
               <th scope="col" className='w-tel'>เบอร์โทรติดต่อ</th>
               <th scope="col" className='w-tel' >เบอร์โทรที่สั่งซื้อ</th>
               <th scope="col" className='w-product'>Product</th>
-              <th scope="col" className='w-auto'>ซื้อจาก</th>
-              <th scope="col" className='w-auto'>วันที่</th>
-              <th scope="col" className='w-auto'>สถานะการเคลม</th>
+              <th scope="col" className='w-from'>ซื้อจาก</th>
+              <th scope="col" className='w-date'>วันที่</th>
+              <th scope="col" className='w-status'>สถานะการเคลม</th>
 
             </tr>
           </thead>
@@ -65,22 +70,23 @@ function ClaimList() {
                 <td>{row.tel}</td>
                 <td>{row.cTel}</td>
                 {<a
-                  className="btn w-100 btn btn-dark border border-dark"
+                  className="btn w-100 btn btn-dark border border-dark align-self-center"
                   data-bs-toggle="collapse"
                   href={`#${row._id}`}
                   role="button" aria-expanded="false"
                   aria-controls={row._id}
                 >{row.nameProduct}</a>}
                 <div className="collapse" id={row._id}>
-                  <div className="card-text " >
-                    SN  {row.sn}
-                    <hr />
-                    อาการ  {row.symp}
+                  <div className="list-group list-group-flush border border-dark" >
+                    <li className='list-group-item'>SN  {row.sn}</li>
+                    <li className='list-group-item'>อาการ  {row.symp}</li>
                   </div>
                 </div>
                 <td>{row.from}</td>
-                <td>{moment(row.update_at).format("DD MMM YY")}</td>
-                <td><a className='btn btn-danger btn-sm' onClick={() => deleteItem(row._id)}>del</a></td>
+                <td>{moment(row.update_at).format("DD/MM/YY")}</td>
+                <td>กำลังส่งเคลม  
+                  <span href="#" className='btn btn-light btn-sm ms-1' onClick={() => editItem(row._id)}>🔧</span>  
+                  <span href="#" className='btn btn-danger btn-sm ms-1' onClick={() => deleteItem(row._id)}>&times;</span></td>
               </tr>
             ))}
 
