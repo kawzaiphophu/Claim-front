@@ -24,7 +24,7 @@ function ClaimList() {
 
   //delete item
   const deleteItem = (_id) => {
-    axios.delete(`http://localhost:3001/claimlist/${_id}`)
+    axios.delete(`http://localhost:3001/claimlist/del/${_id}`)
       .then((response) => {
         // Filter out the deleted item from the items array
         setitems(prevItems => prevItems.filter(item => item._id !== _id));
@@ -34,9 +34,27 @@ function ClaimList() {
       });
   };
 
+  const [status, setStatus] = useState('');
 
-  const editItem = (_id)=>{
-  
+  // Handler function to update selected status
+  const handleStatusChange = (event) => {
+    setStatus(event.target.value);
+  };
+
+  const editItem = (_id, status) => {
+    axios.patch(`http://localhost:3001/claimlist/${_id}/edit`, { status })
+      .then((response) => {
+        // Update the status of the item locally
+        setitems(prevItems => prevItems.map(item => {
+          if (item._id === _id) {
+            return { ...item, status };
+          }
+          return item;
+        }));
+      })
+      .catch((error) => {
+        console.error('Error updating item:', error);
+      });
   }
 
   // No. run number
@@ -69,24 +87,54 @@ function ClaimList() {
                 <td>{row.name}</td>
                 <td>{row.tel}</td>
                 <td>{row.cTel}</td>
-                {<a
-                  className="btn w-100 btn btn-dark border border-dark align-self-center"
+                <td>{<span
+                  className="btn w-100 h-100 btn btn-light border-bottom border-dark align-self-center"
                   data-bs-toggle="collapse"
                   href={`#${row._id}`}
                   role="button" aria-expanded="false"
                   aria-controls={row._id}
-                >{row.nameProduct}</a>}
-                <div className="collapse" id={row._id}>
-                  <div className="list-group list-group-flush border border-dark" >
-                    <li className='list-group-item'>SN  {row.sn}</li>
-                    <li className='list-group-item'>อาการ  {row.symp}</li>
-                  </div>
-                </div>
+                >{row.nameProduct}
+                  <div className="collapse" id={row._id}>
+                    <div className="list-group list-group-flush border border-dark mt-3 rounded " >
+                      <li className='list-group-item'>SN  {row.sn}</li>
+                      <li className='list-group-item'>อาการ  {row.symp}</li>
+                    </div>
+                  </div></span>}</td>
                 <td>{row.from}</td>
                 <td>{moment(row.update_at).format("DD/MM/YY")}</td>
-                <td>กำลังส่งเคลม  
-                  <span href="#" className='btn btn-light btn-sm ms-1' onClick={() => editItem(row._id)}>🔧</span>  
-                  <span href="#" className='btn btn-danger btn-sm ms-1' onClick={() => deleteItem(row._id)}>&times;</span></td>
+                <td><div>
+                  {row.status}
+
+                  {/* edit button */}
+                  <button type="button" class="btn btn-light btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">🔧</button>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog ">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">EDIT</h1>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <select class="form-select form-select-sm" aria-label="Small select example" onChange={handleStatusChange}>
+                            <option selected>รับเข้าสาขา</option>
+                            <option onChange={handleStatusChange} value="ส่งเคลมเเล้ว">ส่งเคลมเเล้ว</option>
+                            <option onChange={handleStatusChange} value="ส่งเคลมเเล้ว">ส่งเคลมเเล้ว</option>
+                            <option onChange={handleStatusChange} value="เคลมผ่าน">เคลมผ่าน</option>
+                            <option onChange={handleStatusChange} value="เคลมไม่ผ่าน">เคลมไม่ผ่าน</option>
+                          </select>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" onClick={() => editItem(row._id, status)}>Update Status</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* del btn */}
+                  <span href="#" className='btn btn-danger btn-sm ms-1' onClick={() => deleteItem(row._id)}>&times;</span>
+                </div>
+                </td>
               </tr>
             ))}
 

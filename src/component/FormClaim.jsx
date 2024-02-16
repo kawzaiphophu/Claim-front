@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from './Nav'
 import axios from "axios"
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../../node_modules/bootstrap/dist/js/bootstrap.bundle'
 
 function FormClaim() {
-    
-    
+
+
 
     //Class Control
     const [inputClass] = useState('form-control');
-   
+
     //create formData add state name,tel,...
     const [formData, setFormData] = useState({
         name: { value: '', isValid: true },
@@ -19,50 +19,56 @@ function FormClaim() {
         nameProduct: { value: '', isValid: true },
         sn: { value: '', isValid: true },
         symp: { value: '', isValid: true },
-        from: { value: '',isValid: true}
+        from: { value: '', isValid: true },
     });
-    
+
+
+
     //add value to fromData every change
     const handleChange = (data, e) => {
         const { value } = e.target;
-        
-        if (['name', 'tel', 'cTel', 'nameProduct', 'sn', 'symp','from'].includes(data)) {
+        if (['name', 'tel', 'cTel', 'nameProduct', 'sn', 'symp', 'from'].includes(data)) {
             const inputElement = document.getElementById(data);
-            if (value.trim() ==="" ) {
+            if (value.trim() === "") {
                 inputElement.classList.add('is-invalid');
-            }else {
+            } else {
                 inputElement.classList.remove('is-invalid');
             }
         }
-        setFormData({ ...formData, [data]: e.target.value });
-    };
+        setFormData({ ...formData, [data]: e.target.value });    };
+
+        
     //confirm yes send req to back /no preventDefault
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-    if (window.confirm("ต้องการบันทึกหรือไม่ ?")) {
-        try {
-            const url = "http://localhost:3001/formclaim";
-            await axios.post(url, formData);
-            // Reset form data after successful submission
-            setFormData({
-                name: { value: '', isValid: true },
-                tel: { value: '', isValid: true },
-                cTel: { value: '', isValid: true },
-                nameProduct: { value: '', isValid: true },
-                sn: { value: '', isValid: true },
-                symp: { value: '', isValid: true },
-                from: { value: '', isValid: true }
-            });
-            // You can optionally display a success message or perform other actions here
-            alert("บันทึกข้อมูลเรียบร้อยแล้ว");
-        } catch (error) {
-            console.log(error);
-            alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+       
+
+        if (window.confirm("ต้องการบันทึกหรือไม่ ?")) {
+            try {
+                if (formData.tel.length === 10 && formData.name,formData.nameProduct,formData.sn,formData.symp,formData.from!==null) {
+                    const url = "http://localhost:3001/formclaim/add";
+                    await axios.post(url, formData);
+                    // Reset form data after successful submission
+                    setFormData({
+                        name: { value: '', isValid: true },
+                        tel: { value: '', isValid: true },
+                        cTel: { value: '', isValid: true },
+                        nameProduct: { value: '', isValid: true },
+                        sn: { value: '', isValid: true },
+                        symp: { value: '', isValid: true },
+                        from: { value: '', isValid: true },
+                    });
+                    alert("บันทึกข้อมูลเรียบร้อยแล้ว");
+                } else {
+                    alert("กรุณาใส่เบอร์โทรศัพท์ที่มีความยาวเท่ากับ 10 หลัก");
+                }
+            } catch (error) {
+                console.log(error);
+                alert("เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+            }
         }
-    } else {
-        // Handle cancellation here if needed
-    }
-    }
+    };
+    
 
     return (
         <>
@@ -78,7 +84,7 @@ function FormClaim() {
                             className={inputClass}
                             id="name"
                             name='name'
-                            placeholder=""
+                            placeholder={formData.name.value}
                             value={formData.name.value}
                             onChange={(e) => handleChange("name", e)} />
                         <label for="name">ชื่อลูกค้า</label>
@@ -89,8 +95,8 @@ function FormClaim() {
                             className={inputClass}
                             id="tel"
                             placeholder=""
-                            onChange={(e) => handleChange("tel", e)} 
-                            maxLength={"10"}/>
+                            onChange={(e) => handleChange("tel", e)}
+                            maxLength={"10"} />
                         <label for="tel">เบอร์โทรศัพท์</label>
                     </div>
                     <div className="form-floating mb-3 mt-3">
@@ -153,9 +159,9 @@ function FormClaim() {
                         <label for="from">สั่งซื้อจาก</label>
                     </div>
                     <div className="d-flex justify-content-center m-1" >
-                        <button 
-                        type='submit' 
-                        className=' m-1 btn btn-success btn-lg'>ส่งข้อมูล</button>
+                        <button
+                            type='submit'
+                            className=' m-1 btn btn-success btn-lg'>ส่งข้อมูล</button>
                     </div>
                 </form>
             </div>
