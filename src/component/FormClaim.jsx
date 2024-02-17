@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Nav from './Nav'
 import axios from "axios"
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
@@ -40,23 +40,22 @@ function FormClaim() {
         
     //confirm yes send req to back /no preventDefault
     const handleSubmit = async (e) => {
-        e.preventDefault();
-       
-
+        
         if (window.confirm("ต้องการบันทึกหรือไม่ ?")) {
             try {
-                if (formData.tel.length === 10 && formData.name,formData.nameProduct,formData.sn,formData.symp,formData.from!==null) {
+                if (formData.tel.length === 10) {
+                    e.preventDefault();
                     const url = "http://localhost:3001/formclaim/add";
-                    await axios.post(url, formData);
+                    axios.post(url, formData)
                     // Reset form data after successful submission
                     setFormData({
-                        name: { value: '', isValid: true },
-                        tel: { value: '', isValid: true },
-                        cTel: { value: '', isValid: true },
-                        nameProduct: { value: '', isValid: true },
-                        sn: { value: '', isValid: true },
-                        symp: { value: '', isValid: true },
-                        from: { value: '', isValid: true },
+                        name: { value: ''},
+                        tel: { value: ''},
+                        cTel: { value: ''},
+                        nameProduct: { value: ''},
+                        sn: { value: ''},
+                        symp: { value: ''},
+                        from: { value: 'สาขา ...'},
                     });
                     alert("บันทึกข้อมูลเรียบร้อยแล้ว");
                 } else {
@@ -94,7 +93,8 @@ function FormClaim() {
                             type="text"
                             className={inputClass}
                             id="tel"
-                            placeholder=""
+                            placeholder={formData.tel.value}
+                            value={formData.tel.value}
                             onChange={(e) => handleChange("tel", e)}
                             maxLength={"10"} />
                         <label for="tel">เบอร์โทรศัพท์</label>
@@ -104,7 +104,8 @@ function FormClaim() {
                             type="text"
                             className={inputClass}
                             id="cTel"
-                            placeholder=""
+                            placeholder={formData.cTel.value}
+                            value={formData.cTel.value}
                             onChange={(e) => handleChange("cTel", e)}
                             maxLength="10" />
                         <label for="cTel">เบอร์โทรศัพท์ที่สั่งซื้อ</label>
@@ -114,7 +115,8 @@ function FormClaim() {
                             type="text"
                             className={inputClass}
                             id="nameProduct"
-                            placeholder=""
+                            placeholder={formData.nameProduct.value}
+                            value={formData.nameProduct.value}
                             onChange={(e) => handleChange("nameProduct", e)} />
                         <label for="nameProduct">ชื่อสินค้า</label>
                     </div>
@@ -123,7 +125,8 @@ function FormClaim() {
                             type="text"
                             className={inputClass}
                             id="sn"
-                            placeholder=""
+                            placeholder={formData.sn.value}
+                            value={formData.sn.value}
                             onChange={(e) => handleChange("sn", e)} />
                         <label for="sn">Serail Number สินค้า</label>
                     </div>
@@ -132,7 +135,8 @@ function FormClaim() {
                             style={{ "height": "100px" }}
                             className="form-control"
                             id="symp"
-                            placeholder=""
+                            placeholder={formData.symp.value}
+                            value={formData.symp.value}
                             onChange={(e) => handleChange("symp", e)} />
                         <label for="symp">อาการเสีย</label>
                     </div>
@@ -141,11 +145,12 @@ function FormClaim() {
                             className="form-select form-select-sm "
                             id="from"
                             aria-label="Floating label select example"
-                            placeholder=""
+                            placeholder={formData.from.value}
+                            value={formData.from.value}
                             onChange={((e) => {
                                 setFormData({ ...formData, from: e.target.value });
                             })}>
-                            <option selected>สาขา ...</option>
+                            <option defaultValue>สาขา ...</option>
                             <option value="บางพลัด">บางพลัด</option>
                             <option value="นครนายก">นครนายก</option>
                             <option value="รามอินทรา">รามอินทรา</option>

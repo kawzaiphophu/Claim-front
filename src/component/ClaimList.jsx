@@ -47,9 +47,10 @@ function ClaimList() {
         // Update the status of the item locally
         setitems(prevItems => prevItems.map(item => {
           if (item._id === _id) {
-            return { ...item, status };
+            return { ...item, status }
           }
           return item;
+
         }));
       })
       .catch((error) => {
@@ -65,8 +66,8 @@ function ClaimList() {
     <>
       <Nav />
       <div className='container-fluid mt-3'>
-        <table className="table table-light  table-bordered text-center">
-          <thead >
+        <table className="table table-dark table-striped  table-bordered text-center">
+          <thead class="thead-dark">
             <tr >
               <th scope="col" className='w-no'>No.</th>
               <th scope="col" className='w-name'>ชื่อลูกค้า</th>
@@ -106,26 +107,26 @@ function ClaimList() {
                   {row.status}
 
                   {/* edit button */}
-                  <button type="button" class="btn btn-light btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">🔧</button>
-                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog ">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">EDIT</h1>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <button type="button" className="btn btn-light btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">🔧</button>
+                  <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="editbtn" aria-hidden="true">
+                    <div className="modal-dialog ">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h1 className="modal-title fs-5" id="editbtn">EDIT</h1>
+                          <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                          <select class="form-select form-select-sm" aria-label="Small select example" onChange={handleStatusChange}>
-                            <option selected>รับเข้าสาขา</option>
+                        <div className="modal-body">
+                          <select className="form-select form-select-sm" aria-label="Small select example" onChange={handleStatusChange}>
+                            <option defaultValue>รับเข้าสาขา</option>
                             <option onChange={handleStatusChange} value="ส่งเคลมเเล้ว">ส่งเคลมเเล้ว</option>
                             <option onChange={handleStatusChange} value="ส่งเคลมเเล้ว">ส่งเคลมเเล้ว</option>
                             <option onChange={handleStatusChange} value="เคลมผ่าน">เคลมผ่าน</option>
                             <option onChange={handleStatusChange} value="เคลมไม่ผ่าน">เคลมไม่ผ่าน</option>
                           </select>
                         </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary" onClick={() => editItem(row._id, status)}>Update Status</button>
+                        <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" className="btn btn-primary" onClick={() => editItem(row._id, status)} data-bs-dismiss="modal">Update Status</button>
                         </div>
                       </div>
                     </div>
