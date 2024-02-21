@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import Nav from './Nav'
 import axios from "axios"
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../../node_modules/bootstrap/dist/js/bootstrap.bundle'
+
 
 function FormClaim() {
 
@@ -71,11 +69,9 @@ function FormClaim() {
 
     return (
         <>
-            <Nav />
-            <div className='container w-50'>
-                <div className='d-flex justify-content-center' style={{ "margin": "50px" }} >
-                    <h1>แบบฟอร์มเคลมสินค้า</h1>
-                </div>
+
+            <div className='container w-100'>
+                
                 <form onSubmit={handleSubmit} id='claimform'>
                     <div className="form-floating mb-3 mt-3 " >
                         <input
@@ -86,7 +82,7 @@ function FormClaim() {
                             placeholder={formData.name.value}
                             value={formData.name.value}
                             onChange={(e) => handleChange("name", e)} />
-                        <label for="name">ชื่อลูกค้า</label>
+                        <label htmlFor="name">ชื่อลูกค้า</label>
                     </div>
                     <div className="form-floating mb-3 mt-3">
                         <input
@@ -97,7 +93,7 @@ function FormClaim() {
                             value={formData.tel.value}
                             onChange={(e) => handleChange("tel", e)}
                             maxLength={"10"} />
-                        <label for="tel">เบอร์โทรศัพท์</label>
+                        <label htmlFor="tel">เบอร์โทรศัพท์</label>
                     </div>
                     <div className="form-floating mb-3 mt-3">
                         <input
@@ -108,7 +104,7 @@ function FormClaim() {
                             value={formData.cTel.value}
                             onChange={(e) => handleChange("cTel", e)}
                             maxLength="10" />
-                        <label for="cTel">เบอร์โทรศัพท์ที่สั่งซื้อ</label>
+                        <label htmlFor="cTel">เบอร์โทรศัพท์ที่สั่งซื้อ</label>
                     </div>
                     <div className="form-floating mb-3 mt-3" >
                         <input
@@ -118,7 +114,7 @@ function FormClaim() {
                             placeholder={formData.nameProduct.value}
                             value={formData.nameProduct.value}
                             onChange={(e) => handleChange("nameProduct", e)} />
-                        <label for="nameProduct">ชื่อสินค้า</label>
+                        <label htmlFor="nameProduct">ชื่อสินค้า</label>
                     </div>
                     <div className="form-floating mb-3 mt-3">
                         <input
@@ -128,7 +124,7 @@ function FormClaim() {
                             placeholder={formData.sn.value}
                             value={formData.sn.value}
                             onChange={(e) => handleChange("sn", e)} />
-                        <label for="sn">Serail Number สินค้า</label>
+                        <label htmlFor="sn">Serail Number สินค้า</label>
                     </div>
                     <div className="form-floating mb-3 mt-3" >
                         <textarea
@@ -138,7 +134,7 @@ function FormClaim() {
                             placeholder={formData.symp.value}
                             value={formData.symp.value}
                             onChange={(e) => handleChange("symp", e)} />
-                        <label for="symp">อาการเสีย</label>
+                        <label htmlFor="symp">อาการเสีย</label>
                     </div>
                     <div className="form-floating mb-3 mt-3">
                         <select
@@ -161,7 +157,7 @@ function FormClaim() {
                             <option value="โคราช">โคราช</option>
                             <option value="บางใหญ่">บางใหญ่</option>
                         </select>
-                        <label for="from">สั่งซื้อจาก</label>
+                        <label htmlFor="from">สั่งซื้อจาก</label>
                     </div>
                     <div className="d-flex justify-content-center m-1" >
                         <button

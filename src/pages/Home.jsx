@@ -1,12 +1,12 @@
 import React from 'react'
-import Nav from './Nav'
+import Nav from '../component/Nav'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 function Home() {
   return (
     <>
         <Nav/>
-      <div>Home</div>
-  
+      <div className='mt-5'>Home</div>
+    
      </>)
 }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../../node_modules/bootstrap/dist/js/bootstrap.bundle'
+
 function Nav() {
     return (
         <nav className="navbar navbar-expand-sm navbar-light bg-light fs-2">
@@ -14,7 +13,7 @@ function Nav() {
                     <div className="navbar-nav">
                         <Link className="nav-link" to="/claimlist">ClaimList</Link>
                         <Link className="nav-link" to="/formclaim">FormClaim</Link>
-                        <Link className="nav-link" to="/about" tabIndex="-1" aria-disabled="true">about</Link>
+                        <Link className="nav-link" to="/#" tabIndex="-1" aria-disabled="true">about</Link>
                     </div>
                 </div>
             </div>
