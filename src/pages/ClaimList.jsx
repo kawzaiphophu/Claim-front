@@ -6,6 +6,7 @@ import FormClaim from '../component/FormClaim';
 
 
 
+
 function ClaimList() {
 
   //usestate item,setitems to update item
@@ -99,44 +100,43 @@ function ClaimList() {
       console.error('Invalid rowData:', rowData);
       return;
     }
-  
+
     // Destructure the rowData to get the specific fields
     const { name, tel, cTel, nameProduct, sn, update_at, from } = rowData;
-  
+
     // Create a new window
     const printWindow = window.open('', '_blank');
-  
+
     // Write the printable content to the new window
     printWindow.document.open();
     printWindow.document.write(`
-    
-      <html>
-        <head>
-          <title>Print</title>
-          <style>
-            /* Optional: Add your custom styles for printing */
-          </style>
-        </head>
-        <body>
-          <div>
-            <p>Name: ${name}</p>
-            <p>Tel: ${tel}</p>
-            <p>Contact Tel: ${cTel}</p>
-            <p>Product: ${nameProduct}</p>
-            <p>SN: ${sn}</p>
-            <p>Time: ${update_at}</p>
-            <p>From: ${from}</p>
-          </div>
-        </body>
-      </html>
-    `);
+    <html>
+      <head>
+        <title>Print</title>
+        <style>
+          
+        </style>
+      </head>
+      <body>
+        <div>
+          <p>Name: ${name}</p>
+          <p>Tel: ${tel}</p>
+          <p>Contact Tel: ${cTel}</p>
+          <p>Product: ${nameProduct}</p>
+          <p>SN: ${sn}</p>
+          <p>Time: ${update_at}</p>
+          <p>From: ${from}</p>
+        </div>
+      </body>
+    </html>
+  `);
     printWindow.document.close();
-  
+
     // Print the new window
     printWindow.print();
   };
-  
-  
+
+
   return (
     <>
       <Nav />
@@ -204,7 +204,7 @@ function ClaimList() {
                 <td><div>
                   {row.status}
                   {/* edit button */}
-                  <button type="button" className="btn btn-light btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">🔧</button>
+                  <button type="button" className="btn btn-light btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">🔧</button>
                   <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="editbtn" aria-hidden="true">
                     <div className="modal-dialog ">
                       <div className="modal-content">
@@ -228,7 +228,7 @@ function ClaimList() {
                       </div>
                     </div>
                   </div>
-                  <span href="#" className='btn btn-info btn-sm ms-1' onClick={() => print(row)}>p</span>
+                  <span href="#" src='' className='btn btn-info btn-sm ms-1' onClick={() => print(row)}>🖨️</span>
                   {/* del btn */}
                   <span href="#" className='btn btn-danger btn-sm ms-1' onClick={() => deleteItem(row._id)}>&times;</span>
                 </div>
