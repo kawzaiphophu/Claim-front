@@ -42,7 +42,7 @@ function FormClaim() {
         if (window.confirm("ต้องการบันทึกหรือไม่ ?")) {
             try {
                 if (formData.tel.length === 10) {
-                    e.preventDefault();
+                    
                     const url = "http://localhost:3001/formclaim/add";
                     axios.post(url, formData)
                     // Reset form data after successful submission
@@ -57,6 +57,7 @@ function FormClaim() {
                     });
                     alert("บันทึกข้อมูลเรียบร้อยแล้ว");
                 } else {
+                    e.preventDefault();
                     alert("กรุณาใส่เบอร์โทรศัพท์ที่มีความยาวเท่ากับ 10 หลัก");
                 }
             } catch (error) {
@@ -80,6 +81,7 @@ function FormClaim() {
                             id="name"
                             name='name'
                             placeholder={formData.name.value}
+                            autoComplete="off"
                             value={formData.name.value}
                             onChange={(e) => handleChange("name", e)} />
                         <label htmlFor="name">ชื่อลูกค้า</label>
@@ -90,6 +92,7 @@ function FormClaim() {
                             className={inputClass}
                             id="tel"
                             placeholder={formData.tel.value}
+                            autoComplete="off"
                             value={formData.tel.value}
                             onChange={(e) => handleChange("tel", e)}
                             maxLength={"10"} />
@@ -101,6 +104,7 @@ function FormClaim() {
                             className={inputClass}
                             id="cTel"
                             placeholder={formData.cTel.value}
+                            autoComplete="off"
                             value={formData.cTel.value}
                             onChange={(e) => handleChange("cTel", e)}
                             maxLength="10" />
@@ -112,6 +116,7 @@ function FormClaim() {
                             className={inputClass}
                             id="nameProduct"
                             placeholder={formData.nameProduct.value}
+                            autoComplete="off"
                             value={formData.nameProduct.value}
                             onChange={(e) => handleChange("nameProduct", e)} />
                         <label htmlFor="nameProduct">ชื่อสินค้า</label>
@@ -122,6 +127,7 @@ function FormClaim() {
                             className={inputClass}
                             id="sn"
                             placeholder={formData.sn.value}
+                            autoComplete="off"
                             value={formData.sn.value}
                             onChange={(e) => handleChange("sn", e)} />
                         <label htmlFor="sn">Serail Number สินค้า</label>

@@ -11,7 +11,7 @@ function ClaimList() {
   //usestate item,setitems to update item
   const [items, setItems] = useState([]);
   const [status, setStatus] = useState('');
-  const [searchItem,setSearchItem] = useState('')
+  const [searchItem, setSearchItem] = useState('')
   const [originalItems, setOriginalItems] = useState([]);
 
   //axios get api to db and res to setitems
@@ -70,7 +70,7 @@ function ClaimList() {
 
   const handleSearchChange = (event) => {
     setSearchItem(event.target.value);
-   
+
   };
 
   const handleSearch = () => {
@@ -78,7 +78,7 @@ function ClaimList() {
     if (!searchTerm) {
       // If search term is empty, reset to original items
       setItems(originalItems);
-      
+
       return;
     }
     const filteredItems = originalItems.filter(item =>
@@ -93,17 +93,60 @@ function ClaimList() {
   // No. run number
   let No = 1
 
-
+  const print = (rowData) => {
+    // Check if rowData exists and has the necessary properties
+    if (!rowData || !rowData.name || !rowData.tel || !rowData.cTel || !rowData.nameProduct || !rowData.sn || !rowData.update_at || !rowData.from) {
+      console.error('Invalid rowData:', rowData);
+      return;
+    }
+  
+    // Destructure the rowData to get the specific fields
+    const { name, tel, cTel, nameProduct, sn, update_at, from } = rowData;
+  
+    // Create a new window
+    const printWindow = window.open('', '_blank');
+  
+    // Write the printable content to the new window
+    printWindow.document.open();
+    printWindow.document.write(`
+    
+      <html>
+        <head>
+          <title>Print</title>
+          <style>
+            /* Optional: Add your custom styles for printing */
+          </style>
+        </head>
+        <body>
+          <div>
+            <p>Name: ${name}</p>
+            <p>Tel: ${tel}</p>
+            <p>Contact Tel: ${cTel}</p>
+            <p>Product: ${nameProduct}</p>
+            <p>SN: ${sn}</p>
+            <p>Time: ${update_at}</p>
+            <p>From: ${from}</p>
+          </div>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+  
+    // Print the new window
+    printWindow.print();
+  };
+  
+  
   return (
     <>
       <Nav />
-      {/* ปุ่มสร้างเคลมใหม่ */}
+      {/* ปุ่มค้นหา */}
       <div className='d-flex justify-content-end'>
-        <div className="input-group m-3 w-25 h-50" >
+        <div className="input-group m-3 w-25" >
           <input type="text" className="form-control" onChange={handleSearchChange} placeholder="ค้นหา.." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
-            <button className="btn btn-outline-secondary " onClick={handleSearch} type="button" id="button-addon2">Search</button>
+          <button className="btn btn-outline-secondary " onClick={handleSearch} type="button" id="button-addon2">Search</button>
         </div>
-
+        {/* ปุ่มสร้างเคลมใหม่ */}
         <button type="button" className="btn btn-success m-3 " data-bs-toggle="modal" data-bs-target="#createclaim" data-bs-whatever="@mdo">New Claim</button>
         <div className="modal fade" id="createclaim" tabIndex="-1" aria-labelledby="editbtn" aria-hidden="true">
           <div className="modal-dialog ">
@@ -117,7 +160,6 @@ function ClaimList() {
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary" data-bs-dismiss="modal">Submit</button>
               </div>
             </div>
           </div>
@@ -186,7 +228,7 @@ function ClaimList() {
                       </div>
                     </div>
                   </div>
-
+                  <span href="#" className='btn btn-info btn-sm ms-1' onClick={() => print(row)}>p</span>
                   {/* del btn */}
                   <span href="#" className='btn btn-danger btn-sm ms-1' onClick={() => deleteItem(row._id)}>&times;</span>
                 </div>
