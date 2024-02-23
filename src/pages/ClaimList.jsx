@@ -39,9 +39,6 @@ function ClaimList() {
         console.error('Error deleting item:', error);
       });
   };
-
-
-
   // onchange status
   const handleStatusChange = (event) => {
     setStatus(event.target.value);
@@ -70,9 +67,13 @@ function ClaimList() {
   }
 
   const handleSearchChange = (event) => {
-    setSearchItem(event.target.value);
-
+    setSearchItem(event.target.value); 
+    console.log(searchItem);
+    console.log(event.target.value);
   };
+  useEffect(() => {
+    console.log(searchItem);
+  }, [searchItem]);
 
   const handleSearch = () => {
     const searchTerm = searchItem.trim(); // Remove leading and trailing spaces
@@ -91,17 +92,18 @@ function ClaimList() {
     setItems(filteredItems);
   };
 
+
   // No. run number
   let No = 1
 
   const print = (rowData) => {
-    // Check if rowData exists and has the necessary properties
+   
     if (!rowData || !rowData.name || !rowData.tel || !rowData.cTel || !rowData.nameProduct || !rowData.sn || !rowData.update_at || !rowData.from) {
       console.error('Invalid rowData:', rowData);
       return;
     }
 
-    // Destructure the rowData to get the specific fields
+   
     const { name, tel, cTel, nameProduct, sn, update_at, from } = rowData;
 
     // Create a new window
@@ -142,7 +144,7 @@ function ClaimList() {
       <Nav />
       {/* ปุ่มค้นหา */}
       <div className='d-flex justify-content-end'>
-        <div className="input-group m-3 w-25" >
+      <div className="input-group m-3 w-50" >
           <input type="text" className="form-control" onChange={handleSearchChange} placeholder="ค้นหา.." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
           <button className="btn btn-outline-secondary " onClick={handleSearch} type="button" id="button-addon2">Search</button>
         </div>
@@ -182,10 +184,10 @@ function ClaimList() {
           <tbody>
             {items.map((row, index) => (
               <tr key={index} >
-                <th scope="row">{No++}</th>
-                <td>{row.name}</td>
-                <td>{row.tel}</td>
-                <td>{<span
+                <th scope="row" data-cell="No.">{No++}</th>
+                <td data-cell="Name">{row.name}</td>
+                <td data-cell="Tel">{row.tel}</td>
+                <td data-cell="Product">{<span
                   className="btn w-100 btn btn-light border-bottom border-dark align-self-center"
                   data-bs-toggle="collapse"
                   href={`#${row._id}`}
@@ -200,8 +202,8 @@ function ClaimList() {
                       <li className='list-group-item d-flex justify-content-between'><div>อาการ :</div>  {row.symp}</li>
                     </div>
                   </div></td>
-                <td>{moment(row.update_at).format("DD/MM/YY")}</td>
-                <td><div>
+                <td data-cell="Date">{moment(row.update_at).format("DD/MM/YY")}</td>
+                <td data-cell="Edit"><div>
                   {row.status}
                   {/* edit button */}
                   <button type="button" className="btn btn-light btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">🔧</button>
