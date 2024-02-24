@@ -5,8 +5,8 @@ function Home() {
   return (
     <>
         <Nav/>
-      <div className='mt-5'>Home</div>
-    
+      <div className='jumbotron'>Home</div>
+      <canvas></canvas>
      </>)
 }
 

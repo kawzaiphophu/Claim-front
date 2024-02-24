@@ -33,16 +33,21 @@
         grid-template-columns: 15ch auto;
         grid-column-gap:0.5rem 1rem;
         text-align: start;
-        
     }
     td::before {
         content: attr(data-cell) ": ";
         font-weight: 700;
         text-transform: capitalize;
+        
     }
    td:nth-child(4){
     grid-template-columns:  1fr;
 
    }
+   td:nth-child(6){
+    margin-bottom: 1rem;
+   }
+ 
+   
 }
 

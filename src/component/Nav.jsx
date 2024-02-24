@@ -12,7 +12,7 @@ function Nav() {
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
                         <Link className="nav-link" to="/claimlist">ClaimList</Link>
-                        <Link className="nav-link" to="/formclaim">FormClaim</Link>
+                        <Link className="nav-link" to="/#">A</Link>
                         <Link className="nav-link" to="/#" tabIndex="-1" aria-disabled="true">about</Link>
                     </div>
                 </div>
