@@ -23,7 +23,7 @@ function FormClaim() {
 
 
     //add value to fromData every change
-    const handleChange = (data, e) => {
+    const handleChange = async(data, e) => {
         const { value } = e.target;
         if (['name', 'tel', 'cTel', 'nameProduct', 'sn', 'symp', 'from'].includes(data)) {
             const inputElement = document.getElementById(data);
@@ -33,27 +33,27 @@ function FormClaim() {
                 inputElement.classList.remove('is-invalid');
             }
         }
-        setFormData({ ...formData, [data]: e.target.value });    };
+        setFormData({ ...formData, [data]: e.target.value });
+    };
 
-        
+
     //confirm yes send req to back /no preventDefault
     const handleSubmit = async (e) => {
-        
         if (window.confirm("ต้องการบันทึกหรือไม่ ?")) {
             try {
                 if (formData.tel.length === 10) {
-                    
+
                     const url = "http://localhost:3001/formclaim/add";
                     axios.post(url, formData)
                     // Reset form data after successful submission
                     setFormData({
-                        name: { value: ''},
-                        tel: { value: ''},
-                        cTel: { value: ''},
-                        nameProduct: { value: ''},
-                        sn: { value: ''},
-                        symp: { value: ''},
-                        from: { value: 'สาขา ...'},
+                        name: { value: '' },
+                        tel: { value: '' },
+                        cTel: { value: '' },
+                        nameProduct: { value: '' },
+                        sn: { value: '' },
+                        symp: { value: '' },
+                        from: { value: 'สาขา ...' },
                     });
                     alert("บันทึกข้อมูลเรียบร้อยแล้ว");
                 } else {
@@ -66,13 +66,13 @@ function FormClaim() {
             }
         }
     };
-    
+
 
     return (
         <>
 
             <div className='container w-100'>
-                
+
                 <form onSubmit={handleSubmit} id='claimform'>
                     <div className="form-floating mb-3 mt-3 " >
                         <input
@@ -80,20 +80,20 @@ function FormClaim() {
                             className={inputClass}
                             id="name"
                             name='name'
-                            placeholder={formData.name.value}
+                            placeholder="ชื่อลูกค้า"
                             autoComplete="off"
-                            value={formData.name.value}
-                            onChange={(e) => handleChange("name", e)} />
+                            // value={formData.name.value}
+                            onChange={(e) => handleChange("name", e)}
+                        />
                         <label htmlFor="name">ชื่อลูกค้า</label>
                     </div>
                     <div className="form-floating mb-3 mt-3">
                         <input
-                            type="text"
-                            className={inputClass}
+                            type="number"
+                            className={inputClass}  
                             id="tel"
                             placeholder={formData.tel.value}
                             autoComplete="off"
-                            value={formData.tel.value}
                             onChange={(e) => handleChange("tel", e)}
                             maxLength={"10"} />
                         <label htmlFor="tel">เบอร์โทรศัพท์</label>
@@ -105,7 +105,6 @@ function FormClaim() {
                             id="cTel"
                             placeholder={formData.cTel.value}
                             autoComplete="off"
-                            value={formData.cTel.value}
                             onChange={(e) => handleChange("cTel", e)}
                             maxLength="10" />
                         <label htmlFor="cTel">เบอร์โทรศัพท์ที่สั่งซื้อ</label>
@@ -117,7 +116,6 @@ function FormClaim() {
                             id="nameProduct"
                             placeholder={formData.nameProduct.value}
                             autoComplete="off"
-                            value={formData.nameProduct.value}
                             onChange={(e) => handleChange("nameProduct", e)} />
                         <label htmlFor="nameProduct">ชื่อสินค้า</label>
                     </div>
@@ -128,7 +126,6 @@ function FormClaim() {
                             id="sn"
                             placeholder={formData.sn.value}
                             autoComplete="off"
-                            value={formData.sn.value}
                             onChange={(e) => handleChange("sn", e)} />
                         <label htmlFor="sn">Serail Number สินค้า</label>
                     </div>
@@ -138,7 +135,6 @@ function FormClaim() {
                             className="form-control"
                             id="symp"
                             placeholder={formData.symp.value}
-                            value={formData.symp.value}
                             onChange={(e) => handleChange("symp", e)} />
                         <label htmlFor="symp">อาการเสีย</label>
                     </div>
@@ -148,7 +144,6 @@ function FormClaim() {
                             id="from"
                             aria-label="Floating label select example"
                             placeholder={formData.from.value}
-                            value={formData.from.value}
                             onChange={((e) => {
                                 setFormData({ ...formData, from: e.target.value });
                             })}>
