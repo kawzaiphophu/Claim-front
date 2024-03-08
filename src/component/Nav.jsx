@@ -7,15 +7,15 @@ function Nav() {
     return (
         <div className="navbar navbar-expand-sm fs-2">
             <div className="container-fluid " >
-                <Link className="navbar-brand fs-1 al" to="/"><img src="" alt="" /></Link>
+                <Link className="navbar-brand" to="/"><img src="https://cdn-icons-png.freepik.com/256/10137/10137151.png?ga=GA1.1.1207387130.1709617310&" alt="" /></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <Link className="nav-link" to="/"><><h1>Home</h1></></Link>
-                        <Link className="nav-link" to="/claimlist"><><h1>ClaimList</h1></></Link>
-                        <Link className="nav-link" to="/about"><><h1>About</h1></></Link>
+                        <Link className="nav-link" to="/"><><h2>Home</h2></></Link>
+                        <Link className="nav-link" to="/claimlist"><><h2>ClaimList</h2></></Link>
+                        <Link className="nav-link" to="/about"><><h2>About</h2></></Link>
 
 
                     </div>

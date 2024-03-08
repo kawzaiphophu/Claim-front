@@ -1,5 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
+.navbar-brand img {
+    width: 60px;
+    padding: 1px;
+    border-radius: 20%;
+}
+.navbar-brand img:hover {
+    filter: invert(90%);opacity: 0.9;
+}
+
 .navbar {
     background-color: #4FC3F7;
+}
+
+.navbar {
+    background-color: #4FC3F7;
+    overflow: hidden;
+}
+
+.navbar-nav .nav-link {
+    float: left;
+    display: flex;
+    color: #121215;
+    text-align: center;
+    padding: 5px 5px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+.navbar-nav .nav-link h2{
+    font-weight: 700;
+    text-align: center;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #1f1f24 ;opacity: 0.9;
+    color: #4FC3F7;
 }

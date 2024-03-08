@@ -89,7 +89,7 @@ function FormClaim() {
                     </div>
                     <div className="form-floating mb-3 mt-3">
                         <input
-                            type="number"
+                            type="text"
                             className={inputClass}  
                             id="tel"
                             placeholder={formData.tel.value}

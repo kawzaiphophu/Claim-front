@@ -58,7 +58,7 @@ function ClaimList() {
         </div>
       </div>
       <div className='container-fluid'>
-        <table className="table table-light table-striped table-bordered text-center">
+        <table className="table table-dark table-striped table-bordered text-center">
           <thead className="thead-dark">
             <tr>
               <th scope="col">No.</th>
