@@ -1,25 +1,29 @@
 import React from 'react'
+import '../css/nav.css'
 import { Link } from 'react-router-dom'
+
 
 function Nav() {
     return (
-        <nav className="navbar navbar-expand-sm navbar-light bg-light fs-2">
+        <div className="navbar navbar-expand-sm fs-2">
             <div className="container-fluid " >
-                <Link className="navbar-brand fs-1" to="/">KKawz</Link>
+                <Link className="navbar-brand fs-1 al" to="/"><img src="" alt="" /></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <Link className="nav-link" to="/claimlist">ClaimList</Link>
-                        <Link className="nav-link" to="/#">A</Link>
-                        <Link className="nav-link" to="/#" tabIndex="-1" aria-disabled="true">about</Link>
+                        <Link className="nav-link" to="/"><><h1>Home</h1></></Link>
+                        <Link className="nav-link" to="/claimlist"><><h1>ClaimList</h1></></Link>
+                        <Link className="nav-link" to="/about"><><h1>About</h1></></Link>
+
+
                     </div>
                 </div>
             </div>
-            
-        </nav>
-        
+
+        </div>
+
     )
 }
 

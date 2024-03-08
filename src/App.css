@@ -1,3 +1,9 @@
-.w-20 {
-    max-width: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: #121215;
+    
 }
