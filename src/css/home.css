@@ -1,3 +1,59 @@
+h1,h2,h3,h4,h5,h5{
+    color: #4FC3F7;
+}
+p {
+    color: #4FC3F7;
+    font-size: larger;
+}
+
+hr {
+    color: #4FC3F7;
+}
+
+.carousel-inner{
+    border-radius: 40px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: 100px minmax(160px, auto) auto;
+    grid-template-areas: 
+      'header header'
+      'leftbar main'
+      'submain submain'
+      'footer footer';
+    column-gap: 7px;
+    row-gap: 10rem;
+  }
+  
+  .page-header {
+    grid-area: header;
+  }
+  
+  .page-leftbar {
+    grid-area: leftbar;
+  }
+  
+  .page-main {
+    grid-area: main;
+  }
+
+  .page-submain {
+    grid-area: submain;
+    text-align: center;
+  }
+  
+  .page-footer {
+    grid-area: footer;
+  }
+  
+  .content {
+    text-align: center;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px;
+  }
 
 .typing::before {
     content: '';

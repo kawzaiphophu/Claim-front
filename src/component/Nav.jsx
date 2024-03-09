@@ -16,8 +16,6 @@ function Nav() {
                         <Link className="nav-link" to="/"><>Home</></Link>
                         <Link className="nav-link" to="/claimlist"><>ClaimList</></Link>
                         <Link className="nav-link" to="/about"><>About</></Link>
-                        <Link className="nav-link" to="/about"><>Test font</></Link>
-
                     </div>
                 </div>
             </div>
