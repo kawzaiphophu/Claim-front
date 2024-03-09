@@ -1,3 +1,4 @@
+/* --------------main--------------*/
 h1,h2,h3,h4,h5,h5{
     color: #4FC3F7;
 }
@@ -9,18 +10,19 @@ p {
 hr {
     color: #4FC3F7;
 }
-
+/* --------------slide-------------- */
 .carousel-inner{
     border-radius: 40px;
 }
 
+/*-------------- Grid-------------- */
 .grid {
     display: grid;
     grid-template-columns: 200px auto;
     grid-template-rows: 100px minmax(160px, auto) auto;
     grid-template-areas: 
       'header header'
-      'leftbar main'
+      'main main'
       'submain submain'
       'footer footer';
     column-gap: 7px;
@@ -31,17 +33,13 @@ hr {
     grid-area: header;
   }
   
-  .page-leftbar {
-    grid-area: leftbar;
-  }
-  
   .page-main {
     grid-area: main;
   }
 
   .page-submain {
     grid-area: submain;
-    text-align: center;
+
   }
   
   .page-footer {
@@ -54,6 +52,27 @@ hr {
     height: 100%;
     padding: 10px;
   }
+/*-------------- griditem-------------- */
+.grid-item {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: stretch;
+    align-items: center;
+    column-gap: 13px;
+    row-gap: 15px;
+  }
+  .content-item {
+    color: #242424;
+    background-color: #505050;
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px;
+    border-radius: 20px;
+  }
+  /* --------------welcometomywebsite-------------- */
 
 .typing::before {
     content: '';
@@ -85,9 +104,10 @@ hr {
 }
 
 .typing h2 {
+    margin: 10px ;
     position: relative;
     color: #4FC3F7;
-    letter-spacing: 10px;
+    letter-spacing: 2px;
     font-size: 3rem;
     overflow: hidden;
     margin-bottom: 7rem;

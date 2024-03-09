@@ -6,6 +6,7 @@ import ClaimTable from '../component/ClaimTable';
 import HandleSearch from '../component/HandleSearch'
 import '../css/claimlist.css'
 
+
 function ClaimList() {
   const [items, setItems] = useState([]);
   const [originalItems, setOriginalItems] = useState([]);

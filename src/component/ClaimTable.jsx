@@ -1,15 +1,25 @@
 // components/ClaimTable.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import moment from 'moment';
 import Print from './Print';
 import DeleteItem from './DeleteItem';
 import {HandleStatusChange,EditItem} from './HandleStatusChange'
 
 const ClaimTable = ({ items, setItems,status,setStatus}) => {
+let newitem = []
+
+useEffect(() => {
+  items.forEach((row,index) => {
+    newitem.push(<div>{row}{index}</div>)
+  
+  });
+}, []);
+
 
   return (
     <tbody>
-      {items.map((row, index) => (
+      <div className="btn" onClick={()=>console.log(newitem)}>aaa</div>
+      { items.map((row, index) => (
         <tr key={index}>
           <th scope="row">{index + 1}</th>
           <td>{row.name}</td>
