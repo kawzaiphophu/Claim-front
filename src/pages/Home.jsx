@@ -2,52 +2,40 @@ import React from 'react'
 import Nav from '../component/Nav'
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../css/home.css'
-import { Link } from 'react-router-dom'
+
 
 function Home() {
   return (
     <>
       <Nav />
 
-      <div className="grid">
-        <header className="page-header">
+      <div className="grid-sm ">
+        <header className="page-header py-5">
           <div className="content">
-            <div className='container' >
+            <div className='container-sm' >
               <div className="typing">
-                <h2 className="text-uppercase">Hi&nbsp;Welcome&nbsp;To&nbsp;My&nbsp;Website</h2>
+                <h2 className="text-uppercase">Welcome&nbsp;To&nbsp;Website</h2>
               </div>
-              <hr />
             </div>
-          </div>
+          </div >
         </header>
-        {/* <aside className="page-leftbar">
-          <div className="content">
-            <h2>Menu</h2><br />
-            <Link>menu 1</Link><br />
-            <Link>menu 2</Link><br />
-            <Link>menu 3</Link><br />
-            <Link>menu 4</Link><br />
-            <Link>menu 5</Link><br />
-            <Link>menu 6</Link><br />
-            <Link>menu 7</Link><br />
-            <Link>menu 8</Link><br />
-            <Link>menu 9</Link><br />
-            <Link>menu 10</Link><br />
 
-          </div>
-        </aside> */}
-
-        <main className="page-main">
+        <hr className='m-5' />
+        {/* about me */}
+        <main className="page-main pt-5">
           <div className="content">
-            <div className='container'>
-              <img className='rounded-circle' style={{ width: '200px', hight: '100px' }} src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="" />
+            <div className='container-sm section-1'>
+              <h1 className='sub-header'>About Me</h1>
+              <img className='rounded-circle py-5' style={{ width: '200px', hight: '100px' }} src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="" />
               <h2 className='d-flex p-2'>My Name Is Kaw </h2>
               <p className='d-flex p-2'>Somboon Zaiphophu Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem soluta harum nemo earum tenetur quae omnis rerum! Praesentium, voluptatum nesciunt perspiciatis quos aliquid dicta! Inventore recusandae animi ad odit doloribus.</p>
             </div>
             <hr />
-            <div className='container-fluid w-100'>
-              <div class="grid-item">
-                <div class="content-item">
+            
+            {/* my Project */}
+            <div className='container-fluid-sm'>
+              <div className="grid-item">
+                <div className="content-item">
                   <div className="container mt-3 d-flex justify-content-center">
                     <div className="card">
                       <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
@@ -59,22 +47,8 @@ function Home() {
                     </div>
                   </div>
                 </div>
-                <div class="item">
-                  <div class="content-item">
-                  <div className="container mt-3 d-flex justify-content-center">
-                    <div className="card">
-                      <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                      <div className="card-body">
-                        <h4 className="card-title">John Doe</h4>
-                        <p className="card-text"></p>
-                        <a href="/" className="btn btn-primary">See Profile</a>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="content-item">
+                <div className="item">
+                  <div className="content-item">
                   <div className="container mt-3 d-flex justify-content-center">
                     <div className="card">
                       <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
@@ -87,8 +61,8 @@ function Home() {
                   </div>
                   </div>
                 </div>
-                <div class="item">
-                  <div class="content-item">
+                <div className="item">
+                  <div className="content-item">
                   <div className="container mt-3 d-flex justify-content-center">
                     <div className="card">
                       <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
@@ -101,8 +75,8 @@ function Home() {
                   </div>
                   </div>
                 </div>
-                <div class="item">
-                  <div class="content-item">
+                <div className="item">
+                  <div className="content-item">
                   <div className="container mt-3 d-flex justify-content-center">
                     <div className="card">
                       <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
@@ -115,8 +89,22 @@ function Home() {
                   </div>
                   </div>
                 </div>
-                <div class="item">
-                  <div class="content-item">
+                <div className="item">
+                  <div className="content-item">
+                  <div className="container mt-3 d-flex justify-content-center">
+                    <div className="card">
+                      <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
+                      <div className="card-body">
+                        <h4 className="card-title">John Doe</h4>
+                        <p className="card-text"></p>
+                        <a href="/" className="btn btn-primary">See Profile</a>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <div className="item">
+                  <div className="content-item">
                   <div className="container mt-3 d-flex justify-content-center">
                     <div className="card">
                       <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />

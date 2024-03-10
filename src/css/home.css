@@ -1,17 +1,23 @@
 /* --------------main--------------*/
-h1,h2,h3,h4,h5,h5{
-    color: #4FC3F7;
+h1,h2,h3,h4,h5,h6 {
+    color: #76ABAE;
 }
+
 p {
-    color: #4FC3F7;
+    color: #76ABAE;
     font-size: larger;
 }
 
 hr {
-    color: #4FC3F7;
+    color: #76ABAE;
+    padding-top: 0;
+}
+
+.section-1{
+    height: 100vh;
 }
 /* --------------slide-------------- */
-.carousel-inner{
+.carousel-inner {
     border-radius: 40px;
 }
 
@@ -20,38 +26,39 @@ hr {
     display: grid;
     grid-template-columns: 200px auto;
     grid-template-rows: 100px minmax(160px, auto) auto;
-    grid-template-areas: 
-      'header header'
-      'main main'
-      'submain submain'
-      'footer footer';
+    grid-template-areas:
+        'header header'
+        'main main'
+        'submain submain'
+        'footer footer';
     column-gap: 7px;
     row-gap: 10rem;
-  }
-  
-  .page-header {
-    grid-area: header;
-  }
-  
-  .page-main {
-    grid-area: main;
-  }
+}
 
-  .page-submain {
+.page-header {
+    grid-area: header;
+}
+
+.page-main {
+    grid-area: main;
+}
+
+.page-submain {
     grid-area: submain;
 
-  }
-  
-  .page-footer {
+}
+
+.page-footer {
     grid-area: footer;
-  }
-  
-  .content {
+}
+
+.content {
     text-align: center;
     box-sizing: border-box;
     height: 100%;
     padding: 10px;
-  }
+}
+
 /*-------------- griditem-------------- */
 .grid-item {
     width: 100%;
@@ -61,18 +68,20 @@ hr {
     align-items: center;
     column-gap: 13px;
     row-gap: 15px;
-  }
-  .content-item {
-    color: #242424;
-    background-color: #505050;
+}
+
+.content-item {
+    color: #31363F;
+    background-color: #EEEEEE;
     font-weight: 600;
     text-align: center;
     box-sizing: border-box;
     height: 100%;
     padding: 10px;
     border-radius: 20px;
-  }
-  /* --------------welcometomywebsite-------------- */
+}
+
+/* --------------welcometomywebsite-------------- */
 
 .typing::before {
     content: '';
@@ -104,44 +113,57 @@ hr {
 }
 
 .typing h2 {
-    margin: 10px ;
+    margin: 0px;
     position: relative;
-    color: #4FC3F7;
+    color: #76ABAE;
     letter-spacing: 2px;
     font-size: 3rem;
     overflow: hidden;
-    margin-bottom: 7rem;
-    animation: type 3s steps(20)  ;
+    animation: type 3s steps(20);
+    display: inline-block;
 }
 
 @keyframes type {
 
     0% {
         width: 0px;
+
     }
 
     100% {
         width: 100%;
-        
+
     }
 }
 
-@media(max-width: 330px) {
+@media(max-width: 414px) {
     .typing h2 {
-        font-size: 3rem;
-        animation: type 5s steps(10) infinite;
+        margin: px;
+        position: relative;
+        color: #76ABAE;
+        letter-spacing: 2px;
+        font-size: 1.2rem;
+        overflow: hidden;
+        animation: type 3s steps(20);
+        display: inline-block
     }
-
     @keyframes type {
 
-        0%,
-        100% {
-            width: 0px;
+        0% {
+            width: 1px;
         }
 
-        30%,
-        60% {
+
+        100% {
             width: 305px;
         }
+    }
+}
+@media(max-width: 768px){
+    .grid-item{
+        grid-template-columns: 1fr 1fr;
+    }
+    .content-item {
+        height: 100%;
     }
 }

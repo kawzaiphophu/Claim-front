@@ -1,39 +1,69 @@
-
 .navbar-brand img {
-    width: 60px;
-    padding: 1px;
+    width: 50px;
+    padding: 0px;
+    margin: 0px;
     border-radius: 20%;
+    filter: drop-shadow(#31363F 0.5rem 0.5rem 1rem)
 }
+
 .navbar-brand img:hover {
-    filter: invert(90%);opacity: 0.9;
+    filter: invert(90%);
+    opacity: 0.9;
 }
 
 .navbar {
-    background-color: #4FC3F7;
-}
-
-.navbar {
-    background-color: #4FC3F7;
+    background-color: #76ABAE;
     overflow: hidden;
+}
+
+/* Add smooth transition effect */
+.navbar--hidden {
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Add smooth transition effect */
+.navbar--show {
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
 }
 
 .navbar-nav .nav-link {
     float: left;
     display: flex;
-    color: #121215;
+    color: #31363F;
     text-align: center;
-    padding: 5px 5px;
+    padding: 1px 5px;
     text-decoration: none;
     border-radius: 20px;
-    margin: 0 5px;
+    margin: 0 1px;
     text-align: center;
-}
-.navbar-nav .nav-link h2{
-    font-weight: 700;
-    text-align: center;
+
 }
 
-.navbar-nav .nav-link:hover {
-    background-color: #1f1f24 ;opacity: 0.9;
-    color: #4FC3F7;
+.navbar-nav a {
+    text-transform: uppercase;
+    text-decoration: none;
+    position: relative;
+}
+/* animation */
+.navbar-nav a::before {
+    content: "";
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: #EEEEEE;
+    transition: 0.5s transform ease;
+    transform: scale3d(0, 1, 1);
+    transform-origin: 0 50%;
+}
+/* hover animation add */
+.navbar-nav a:hover::before {
+    transform: scale3d(1, 1, 1);
+}
+/* add now hear */
+.nav-link.active::before {
+    transform: scale3d(1, 1, 1);
 }
