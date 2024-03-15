@@ -1,12 +1,13 @@
-.w-no{
+.w-no {
     width: 5%;
 }
-.w-name{
+
+.w-name {
     width: 15%;
-    
+
 }
 
-.w-tel{
+.w-tel {
     width: 15%;
 }
 
@@ -15,11 +16,11 @@
 }
 
 
-.w-date{
+.w-date {
     width: 10%;
 }
 
-.w-status{
+.w-status {
     width: 25%;
 }
 
@@ -31,23 +32,48 @@
     td {
         display: grid;
         grid-template-columns: 15ch auto;
-        grid-column-gap:0.5rem 1rem;
+        grid-column-gap: 0.5rem 1rem;
         text-align: start;
+        border: none;
     }
+
     td::before {
-        content: attr(data-cell) ": ";
         font-weight: 700;
         text-transform: capitalize;
-        
+        border: none;
+        padding: 0 20px;
     }
-   td:nth-child(4){
-    grid-template-columns:  1fr;
 
-   }
-   td:nth-child(6){
-    margin-bottom: 1rem;
-   }
- 
-   
+    td:nth-child(2)::before {
+        content: attr(data-cell) " NAME : ";
+    }
+    td:nth-child(3)::before {
+        content: attr(data-cell) " TEL : ";
+    }
+    td:nth-child(4)::before {
+        content: attr(data-cell) "";
+    }
+    td:nth-child(5)::before {
+        content: attr(data-cell) " DATE : ";
+    }
+    td:nth-child(6)::before {
+        content: attr(data-cell) " FROM : ";
+    }
+    td:nth-child(7)::before {
+        content: attr(data-cell) "";
+    }
+    td:nth-child(7) {
+        grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr;
+
+    }    
+    td:nth-child(4) {
+        grid-template-columns: 1fr;
+
+    }
+
+    td:nth-child(7) {
+        margin-bottom: 1rem;
+    }
+
+
 }
-

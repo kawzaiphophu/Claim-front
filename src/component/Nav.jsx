@@ -8,9 +8,16 @@ function Nav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+      const currentScrollPos = window.scrollY;
+      console.log(visible);
+      console.log(prevScrollPos);
       setPrevScrollPos(currentScrollPos);
+      if (prevScrollPos>=299&&prevScrollPos<=1099) {
+         setVisible(false)
+
+      } else{
+        setVisible(true)
+      }
     };
 
     window.addEventListener('scroll', handleScroll);

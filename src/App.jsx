@@ -7,6 +7,7 @@ import About from './pages/About';
 import Loading from './pages/Loading';
 import './App.css';
 
+
 const App = () => {
   const [loading, setLoading] = useState(true); 
   const location = useLocation();
@@ -15,7 +16,7 @@ const App = () => {
     setLoading(true);
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, );
 
 
     return () => clearTimeout(timeout);
