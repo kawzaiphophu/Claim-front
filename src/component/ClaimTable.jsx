@@ -11,10 +11,10 @@ const ClaimTable = ({ items, setItems,status,setStatus}) => {
     <tbody>
       { items.map((row, index) => (
         <tr key={index}>
-          <th scope="row">{index + 1}</th>
-          <td>{row.name}</td>
-          <td>{row.tel}</td>
-          <td>
+          <th className='w-no' scope="row">{index + 1}</th>
+          <td className='w-name'>{row.name}</td>
+          <td className='w-tel'>{row.tel}</td>
+          <td className='w-product'>
             <span
               className="btn w-100 btn btn-light border-bottom border-dark align-self-center"
               data-bs-toggle="collapse"
@@ -42,14 +42,14 @@ const ClaimTable = ({ items, setItems,status,setStatus}) => {
               </div>
             </div>
           </td>
-          <td>{moment(row.update_at).format("DD/MM/YY")}</td>
+          <td className='w-date'>{moment(row.update_at).format("DD/MM/YY")}</td>
 
-          <td>
+          <td className='w-status'>
             <div className="d-flex bd-highlight">
               <div className="flex-grow-1 bd-highlight">{row.status}</div>
             </div>
           </td>
-          <td>
+          <td className='w-edit'>
             <button type="button" className="btn btn-light btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">🔧</button>
             <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="editbtn" aria-hidden="true">
               <div className="modal-dialog ">

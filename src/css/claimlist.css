@@ -21,7 +21,10 @@
 }
 
 .w-status {
-    width: 25%;
+    width: 13%;
+}
+.w-edit{
+    width: 20%;
 }
 
 @media only screen and (max-width: 600px) {
