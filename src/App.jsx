@@ -16,7 +16,7 @@ const App = () => {
     setLoading(true);
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, );
+    }, 500);
 
 
     return () => clearTimeout(timeout);

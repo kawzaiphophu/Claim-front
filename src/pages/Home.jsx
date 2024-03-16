@@ -31,10 +31,10 @@ function Home() {
               <p className='d-flex p-2'>Somboon Zaiphophu Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem soluta harum nemo earum tenetur quae omnis rerum! Praesentium, voluptatum nesciunt perspiciatis quos aliquid dicta! Inventore recusandae animi ad odit doloribus.</p>
             </div>
             <hr />
-            
+            <div className="container d-flex justify-content-center">
             {/* my Project */}
-            <div className='container-fluid-sm'>
-              <div className="grid-item">
+            <div className='  container-fluid-sm w-75'>
+              <div className="grid-item content ">
                 <div className="content-item">
                   <div className="container mt-3 d-flex justify-content-center">
                     <div className="card">
@@ -118,6 +118,7 @@ function Home() {
                   </div>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </main >
