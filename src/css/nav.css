@@ -17,8 +17,8 @@
 
 .navbar {
     background-color: #76ABAE;
-    overflow: hidden;
 }
+
 .navbar-nav a{
     transform: scale(1);
     transform-origin: bottom;
@@ -45,7 +45,6 @@
 
 .navbar-nav .nav-link {
     float: left;
-    display: flex;
     color: #31363F;
     text-align: center;
     padding: 1px 5px;
@@ -53,14 +52,9 @@
     border-radius: 20px;
     margin: 0 1px;
     text-align: center;
-
-}
-
-.navbar-nav a {
     text-transform: uppercase;
-    text-decoration: none;
-    position: relative;
 }
+
 /* animation */
 .navbar-nav a::before {
     content: "";

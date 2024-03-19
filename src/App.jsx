@@ -6,6 +6,7 @@ import ClaimList from "./pages/ClaimList";
 import About from './pages/About';
 import Loading from './pages/Loading';
 import './App.css';
+import Poke from './pages/Poke';
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/claimlist" element={<ClaimList />} />
+          <Route path="/poke" element={<Poke />} />
           <Route path="/about" element={<About />} />
         </Routes>
       )}
