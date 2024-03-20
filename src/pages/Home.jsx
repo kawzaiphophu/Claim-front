@@ -26,14 +26,14 @@ function Home() {
           <div className="content">
             <div className='container-sm section-1'>
               <h1 className='sub-header'>About Me</h1>
-              <img className='rounded-circle py-5' style={{ width: '200px', hight: '100px' }} src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="" />
+              <img className='rounded-circle p-1 my-5' style={{ width: '200px', hight: '100px' }} src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1710944863~exp=1710945463~hmac=b26c699633c3c26d22e17f4304db7b712897496dca5afdfeca2af8493d7f1fd6" alt="" />
               <h2 className='d-flex p-2'>My Name Is Kaw </h2>
               <p className='d-flex p-2'>Somboon Zaiphophu Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem soluta harum nemo earum tenetur quae omnis rerum! Praesentium, voluptatum nesciunt perspiciatis quos aliquid dicta! Inventore recusandae animi ad odit doloribus.</p>
             </div>
             <hr />
             <div className="container d-flex justify-content-center">
             {/* my Project */}
-            <div className='  container-fluid-sm w-75'>
+            <div className='  container-fluid-sm w-100 d-flex justify-content-between'>
               <div className="grid-item content ">
                 <div className="content-item">
                   <div className="container mt-3 d-flex justify-content-center">

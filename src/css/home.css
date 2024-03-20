@@ -14,13 +14,11 @@ p {
 }
 
 hr {
-    color: #76ABAE;
+    color: rgb(118, 171, 174);
     padding-top: 0;
 }
 img{
-    box-shadow: 1px 0px 27px 4px rgba(117, 117, 117, 0.479);
-    -webkit-box-shadow: 1px 0px 27px 4px #76ABAE;
-
+    filter: drop-shadow(0 0 10px rgb(118, 171, 174,0.5));
 }
 
 .section-1 {
