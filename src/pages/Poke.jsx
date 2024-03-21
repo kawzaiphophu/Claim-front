@@ -63,34 +63,50 @@ function Poke() {
                 </div>
 
                 <div className="row">
-                    {pokeData.map((pokemon, index) => (
-                        <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div className="card bg-dark text-white position-relative">
-                                <NavLink to={`/poke/${pokemon.id}`}>
-                                    <img
-                                        src={pokemon.picture}
-                                        className="card-img"
-                                        alt=''
-                                        style={{ cursor: 'pointer' }}
-                                    />
-                                    <div className="card-img-overlay">
-                                        <p className="card-title fs-6" style={{ top: '0', left: '0', position: 'absolute', margin: '5px' }}>{pokemon.name}</p>
-                                        <p className="card-title fs-10" style={{ top: '0', right: '0', position: 'absolute', margin: '5px' }}>ID: {pokemon.id}</p>
-                                        <p className="card-text fs-10 w-100 position-absolute" style={{ bottom: '0', left: '0', margin: '5px' }}>
-                                            {pokemon.types && (
-                                                <>
-                                                    {pokemon.types.map((type, index) => (
-                                                        <span key={index}>    {type.type.name}</span>
-                                                    ))}
-                                                </>
-                                            )}
-                                        </p>
+                    {isLoading ? (
+                        pokeData.map((pokemon, index) => (
+                            <div className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4'>
+                                <div className="card">
+                                    <div className="card-body" style={{ height: "300px" }}>
+                                        <h5 className="card-title"></h5>
+                                        <p className="card-text"></p>
+                                        <p className="card-text"><small className="text-muted"></small></p>
                                     </div>
-                                </NavLink>
+                                </div>
                             </div>
-                        </div>
+                        ))
 
-                    ))}
+                    ) : (
+                        pokeData.map((pokemon, index) => (
+                            <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                                <div className="card bg-dark text-white position-relative">
+                                    <NavLink to={`/poke/${pokemon.id}`}>
+                                        <img
+                                            src={pokemon.picture}
+                                            className="card-img"
+                                            alt=''
+                                            style={{ cursor: 'pointer' }}
+                                        />
+                                        <div className="card-img-overlay">
+                                            <p className="card-title fs-6" style={{ top: '0', left: '0', position: 'absolute', margin: '5px' }}>{pokemon.name}</p>
+                                            <p className="card-title fs-10" style={{ top: '0', right: '0', position: 'absolute', margin: '5px' }}>ID: {pokemon.id}</p>
+                                            <p className="card-text fs-10 w-100 position-absolute" style={{ bottom: '0', left: '0', margin: '5px' }}>
+                                                {pokemon.types && (
+                                                    <>
+                                                        {pokemon.types.map((type, index) => (
+                                                            <span key={index}>    {type.type.name}</span>
+                                                        ))}
+                                                    </>
+                                                )}
+                                            </p>
+                                        </div>
+                                    </NavLink>
+                                </div>
+                            </div>
+
+                        ))
+                    )}
+
                 </div>
 
 
