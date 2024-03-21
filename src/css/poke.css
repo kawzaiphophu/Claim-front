@@ -1,3 +1,25 @@
+@import url('https://fonts.cdnfonts.com/css/pokemon-solid');
+.pokemondiv h1{
+    font-family: 'Pokemon Solid', sans-serif;
+    letter-spacing: 3px;                                        
+}
+.pokemondiv p{
+    color: white;
+}
+.pokemondiv{
+    background-color: rgba(255, 255, 255, 0.253);
+    border-radius: 20px;
+}
+.loading{
+    background-color: rgba(121, 121, 121, 0.151);
+}
+.card{
+    transition: transform 0.2s ease;
+}
+.card:hover{
+    transform: scale(1.1);
+}
+
 .fs-10{
     font-size: small;
 }

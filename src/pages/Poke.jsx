@@ -1,7 +1,5 @@
 import '../css/poke.css';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Loading from './Loading';
 import Nav from '../component/Nav';
 import { NavLink } from 'react-router-dom';
 import { fetchPokemon } from '../help/pokemon';
@@ -14,13 +12,13 @@ function Poke() {
     const [filterType, setFilterType] = useState();
 
     useEffect(() => {
-
+        setIsLoading(true)
         const getPokemon = async (pagePokemon) => {
-            setIsLoading(true)
             try {
                 fetchPokemon(pagePokemon)
                     .then((pokemons) => {
-                        setPokedata(pokemons);
+                        setPokedata(pokemons.pokeData);
+                        console.log(pokeData);
                     })
                     .catch((err) => console.log("fetch pokemon err"))
             }
@@ -29,13 +27,14 @@ function Poke() {
             }
         }
         getPokemon(pagePokemon);
-        setIsLoading(false);
+        setTimeout(() => { setIsLoading(false); }
+            , 300)
     }, [pagePokemon]);
 
     return (
         <>
             <Nav />
-            <div className='container bg-light w-75 h-100 py-5 my-5'>
+            <div className='container w-75 h-100 py-5 my-5 pokemondiv'>
                 <h1 className='d-flex justify-content-center'> Pokémon</h1>
                 <div className="my-3 d-flex justify-content-between">
                     <input
@@ -58,42 +57,41 @@ function Poke() {
                     </select>
                 </div>
                 <div className='d-flex justify-content-between'>
-                    <button className={`btn bg-dark text-light m-3 ${pagePokemon <= 1 ? 'disabled' : ''}`} type='button' onClick={() => { setPagePokemon(pagePokemon - 1); setIsLoading(true); }}>prev</button>
-                    <button className={`btn bg-dark text-light m-3 ${pagePokemon > 20 ? 'disabled' : ''}`} onClick={() => (pokeData.length > 49) ? setPagePokemon(pagePokemon + 1) : setPagePokemon(pagePokemon)}>next</button>
+                    <button className={`btn bg-dark text-light m-3 ${pagePokemon <= 1 ? 'disabled' : ''}`} type='button' onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon - 1); }}>prev</button>
+                    <button className={`btn bg-dark text-light m-3 ${pagePokemon > 20 ? 'disabled' : ''}`} onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon + 1); }}>next</button>
                 </div>
 
                 <div className="row">
                     {isLoading ? (
                         pokeData.map((pokemon, index) => (
-                            <div className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4'>
-                                <div className="card">
-                                    <div className="card-body" style={{ height: "300px" }}>
-                                        <h5 className="card-title"></h5>
-                                        <p className="card-text"></p>
-                                        <p className="card-text"><small className="text-muted"></small></p>
+                            <div className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 '>
+                                <div className="card loading">
+                                    <div className="card-body" style={{ height: "200px" }}>
+                                        <h5 className="card-title"> </h5>
+                                        <p className="card-text"> </p>
+                                        <p className="card-text"> <small className="text-muted"></small></p>
                                     </div>
                                 </div>
                             </div>
                         ))
-
                     ) : (
                         pokeData.map((pokemon, index) => (
-                            <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                                <div className="card bg-dark text-white position-relative">
-                                    <NavLink to={`/poke/${pokemon.id}`}>
+                            <div key={pokemon.data.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                                <div className="card bg-dark text-white position-relative" style={{ minHeight: "200px" }}>
+                                    <NavLink to={`/poke/${pokemon.data.id}`}>
                                         <img
-                                            src={pokemon.picture}
+                                            src={pokemon.data.sprites.front_default}
                                             className="card-img"
                                             alt=''
                                             style={{ cursor: 'pointer' }}
                                         />
                                         <div className="card-img-overlay">
-                                            <p className="card-title fs-6" style={{ top: '0', left: '0', position: 'absolute', margin: '5px' }}>{pokemon.name}</p>
-                                            <p className="card-title fs-10" style={{ top: '0', right: '0', position: 'absolute', margin: '5px' }}>ID: {pokemon.id}</p>
+                                            <p className="card-title fs-6" style={{ top: '0', left: '0', position: 'absolute', margin: '5px' }}>{pokemon.data.name}</p>
+                                            <p className="card-title fs-10" style={{ top: '0', right: '0', position: 'absolute', margin: '5px' }}>ID: {pokemon.data.id}</p>
                                             <p className="card-text fs-10 w-100 position-absolute" style={{ bottom: '0', left: '0', margin: '5px' }}>
-                                                {pokemon.types && (
+                                                {pokemon.data.types && (
                                                     <>
-                                                        {pokemon.types.map((type, index) => (
+                                                        {pokemon.data.types.map((type, index) => (
                                                             <span key={index}>    {type.type.name}</span>
                                                         ))}
                                                     </>
@@ -104,7 +102,8 @@ function Poke() {
                                 </div>
                             </div>
 
-                        ))
+                        )
+                        )
                     )}
 
                 </div>

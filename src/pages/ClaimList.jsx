@@ -11,7 +11,7 @@ import '../css/claimlist.css'
 function ClaimList() {
   const [items, setItems] = useState([]);
   const [originalItems, setOriginalItems] = useState([]);
-  const [status,setStatus] = useState('')
+  const [status, setStatus] = useState('')
 
   useEffect(() => {
     fetchData();
@@ -72,7 +72,7 @@ function ClaimList() {
               <th scope="col">Edit</th>
             </tr>
           </thead>
-          <ClaimTable items={items} fetchData={fetchData} setItems={setItems} status={status} setStatus={setStatus}/>
+          <ClaimTable items={items} fetchData={fetchData} setItems={setItems} status={status} setStatus={setStatus} />
         </table>
       </div>
     </>

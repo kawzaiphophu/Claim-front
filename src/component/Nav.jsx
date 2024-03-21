@@ -10,7 +10,7 @@ function Nav() {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       setPrevScrollPos(currentScrollPos);
-      if (prevScrollPos >= 299 && prevScrollPos <= 1099) {
+      if (prevScrollPos >= 30) {
         setVisible(false)
 
       } else {
