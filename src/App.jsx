@@ -7,6 +7,7 @@ import About from './pages/About';
 import Loading from './pages/Loading';
 import './App.css';
 import Poke from './pages/Poke';
+import PokemonDetails from './component/PokemonDetails';
 
 
 const App = () => {
@@ -31,7 +32,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/claimlist" element={<ClaimList />} />
-          <Route path="/poke" element={<Poke />} />
+          <Route path="/pokemon" element={<Poke />} />
+          <Route path="/pokemon/:id" element={<PokemonDetails />} /> 
           <Route path="/about" element={<About />} />
         </Routes>
       )}

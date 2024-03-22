@@ -46,7 +46,7 @@ function Nav() {
               </NavLink>
               <ul className="dropdown-menu w-25 p-3" aria-labelledby="navbarDropdown">
                 <li><NavLink className="dropdown-item " to="/ClaimList"> Claim</NavLink></li>
-                <li><NavLink className="dropdown-item " to="/Poke"> Poke</NavLink></li>
+                <li><NavLink className="dropdown-item " to="/Pokemon"> Poke</NavLink></li>
                 <li><NavLink className="dropdown-item " to="test"> test</NavLink></li>
                 <li><hr className="dropdown-divider" /></li>
                 <li><NavLink className="dropdown-item " to="1">test2</NavLink></li>

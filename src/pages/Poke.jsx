@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react';
 import Nav from '../component/Nav';
 import { NavLink } from 'react-router-dom';
 import { fetchPokemon } from '../help/pokemon';
-
+import PokemonDetails from '../component/PokemonDetails';
 function Poke() {
     const [isLoading, setIsLoading] = useState(false);
     const [pokeData, setPokedata] = useState([]);
     const [pagePokemon, setPagePokemon] = useState(1);
     const [searchTerm, setSearchTerm] = useState();
     const [filterType, setFilterType] = useState();
+    const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         setIsLoading(true)
@@ -30,6 +32,14 @@ function Poke() {
         setTimeout(() => { setIsLoading(false); }
             , 300)
     }, [pagePokemon]);
+    const openModal = (pokemon) => {
+        setSelectedPokemon(pokemon);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <>
@@ -64,7 +74,7 @@ function Poke() {
                 <div className="row">
                     {isLoading ? (
                         pokeData.map((pokemon, index) => (
-                            <div className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 '>
+                            <div key={index} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 '>
                                 <div className="card loading">
                                     <div className="card-body" style={{ height: "200px" }}>
                                         <h5 className="card-title"> </h5>
@@ -78,7 +88,7 @@ function Poke() {
                         pokeData.map((pokemon, index) => (
                             <div key={pokemon.data.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                                 <div className="card bg-dark text-white position-relative" style={{ minHeight: "200px" }}>
-                                    <NavLink to={`/poke/${pokemon.data.id}`}>
+                                    <NavLink to="#" onClick={() => openModal(pokemon)}>
                                         <img
                                             src={pokemon.data.sprites.front_default}
                                             className="card-img"
@@ -101,12 +111,25 @@ function Poke() {
                                     </NavLink>
                                 </div>
                             </div>
-
-                        )
-                        )
+                        ))
                     )}
 
                 </div>
+                {selectedPokemon && (
+                    <div className="modal fade show container-fluid" tabIndex="-1" role="dialog" style={{ display: isModalOpen ? 'block' : 'none', width: '100rem' }}>
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">{selectedPokemon.data.name}</h5>
+                                <button type="button" className="btn-close" aria-label="Close" onClick={closeModal}></button>
+                            </div>
+                            <div className="modal-body">
+                                <PokemonDetails selectedPokemon={selectedPokemon} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                )}
 
 
             </div>
