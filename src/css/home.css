@@ -10,7 +10,8 @@ h6 {
 
 p {
     color: #76ABAE;
-    font-size: larger;
+    font-size: 1.5rem;
+    text-align: justify;
 }
 
 hr {

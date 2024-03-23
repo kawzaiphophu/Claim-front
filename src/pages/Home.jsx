@@ -31,7 +31,7 @@ function Home() {
                 <img className='rounded-circle img-2' src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1710944863~exp=1710945463~hmac=b26c699633c3c26d22e17f4304db7b712897496dca5afdfeca2af8493d7f1fd6" alt="" />
               </div>
               <h2 className='d-flex p-2'>My Name Is Kaw </h2>
-              <p className='d-flex p-2'>Somboon Zaiphophu Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem soluta harum nemo earum tenetur quae omnis rerum! Praesentium, voluptatum nesciunt perspiciatis quos aliquid dicta! Inventore recusandae animi ad odit doloribus.</p>
+              <p className='d-flex p-2 ps-5'>Somboon Zaiphophu Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem soluta harum nemo earum tenetur quae omnis rerum! Praesentium, voluptatum nesciunt perspiciatis quos aliquid dicta! Inventore recusandae animi ad odit doloribus.</p>
             </div>
             <hr />
             <div className="container d-flex justify-content-center">
