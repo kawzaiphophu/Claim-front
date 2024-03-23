@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Nav from './Nav';
 import { useParams } from 'react-router-dom';
 import '../css/poke.css';
 
-const PokemonDetails = (pokeData) => {
+const PokemonDetails = (selectedPokemon) => {
     const [pokemonDetails, setPokemonDetails] = useState(null);
     const [currentId, setCurrentId] = useState(null);
     const { id } = useParams();
@@ -44,13 +45,15 @@ const PokemonDetails = (pokeData) => {
 
     return (
         <div>
-            <div className='container pt-5 mt-5'>
+            <Nav/>
+            <div className='container pt-5 mt-5' style={{height:'100vh'}}>
                 <div className='text-center pokemondiv '>
-                    <div className='d-flex justify-content-between p-3'>
-                        <div className={`btn btn-light fs-4 ${currentId <= 1 ? 'disabled' : ''}`} onClick={handlePrevClick}>Prev Pokemon</div>
-                        <div className={`btn btn-light fs-4 ${currentId >= 1025 ? 'disabled' : ''}`} onClick={handleNextClick}>Next Pokemon</div>
+                    <div className='d-flex justify-content-between px-2 pt-5'>
+                        <div className={`btn btn-light fs-4 ${currentId <= 1 ? 'disabled' : ''}`} onClick={handlePrevClick}>Prev</div>
+                        <h1 className=''>{pokemonDetails?.name} #{pokemonDetails?.id}</h1>
+                        <div className={`btn btn-light fs-4 ${currentId >= 1025 ? 'disabled' : ''}`} onClick={handleNextClick}>Next</div>
                     </div>
-                    <h1 className=''>{pokemonDetails?.name} #{pokemonDetails?.id}</h1>
+                  
                     <img className='mx-auto' src={pokemonDetails?.sprites?.other?.home?.front_default} alt={pokemonDetails?.name} />
                 </div>
             </div>

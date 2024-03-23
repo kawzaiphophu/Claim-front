@@ -26,99 +26,102 @@ function Home() {
           <div className="content">
             <div className='container-sm section-1'>
               <h1 className='sub-header'>About Me</h1>
-              <img className='rounded-circle p-1 my-5' style={{ width: '200px', hight: '100px' }} src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1710944863~exp=1710945463~hmac=b26c699633c3c26d22e17f4304db7b712897496dca5afdfeca2af8493d7f1fd6" alt="" />
+              <div className='img'>
+                <img className='img-1' src="https://th.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" alt="" />
+                <img className='rounded-circle img-2' src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1710944863~exp=1710945463~hmac=b26c699633c3c26d22e17f4304db7b712897496dca5afdfeca2af8493d7f1fd6" alt="" />
+              </div>
               <h2 className='d-flex p-2'>My Name Is Kaw </h2>
               <p className='d-flex p-2'>Somboon Zaiphophu Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem soluta harum nemo earum tenetur quae omnis rerum! Praesentium, voluptatum nesciunt perspiciatis quos aliquid dicta! Inventore recusandae animi ad odit doloribus.</p>
             </div>
             <hr />
             <div className="container d-flex justify-content-center">
-            {/* my Project */}
-            <div className='  container-fluid-sm w-100 d-flex justify-content-between'>
-              <div className="grid-item content ">
-                <div className="content-item">
-                  <div className="container mt-3 d-flex justify-content-center">
-                    <div className="card">
-                      <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                      <div className="card-body">
-                        <h4 className="card-title">John Doe</h4>
-                        <p className="card-text"></p>
-                        <a href="/" className="btn btn-primary">See Profile</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="item">
+              {/* my Project */}
+              <div className='  container-fluid-sm w-100 d-flex justify-content-between'>
+                <div className="grid-item content ">
                   <div className="content-item">
-                  <div className="container mt-3 d-flex justify-content-center">
-                    <div className="card">
-                      <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                      <div className="card-body">
-                        <h4 className="card-title">John Doe</h4>
-                        <p className="card-text"></p>
-                        <a href="/" className="btn btn-primary">See Profile</a>
+                    <div className="container mt-3 d-flex justify-content-center">
+                      <div className="card">
+                        <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
+                        <div className="card-body">
+                          <h4 className="card-title">John Doe</h4>
+                          <p className="card-text"></p>
+                          <a href="/" className="btn btn-primary">See Profile</a>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  </div>
-                </div>
-                <div className="item">
-                  <div className="content-item">
-                  <div className="container mt-3 d-flex justify-content-center">
-                    <div className="card">
-                      <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                      <div className="card-body">
-                        <h4 className="card-title">John Doe</h4>
-                        <p className="card-text"></p>
-                        <a href="/" className="btn btn-primary">See Profile</a>
+                  <div className="item">
+                    <div className="content-item">
+                      <div className="container mt-3 d-flex justify-content-center">
+                        <div className="card">
+                          <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
+                          <div className="card-body">
+                            <h4 className="card-title">John Doe</h4>
+                            <p className="card-text"></p>
+                            <a href="/" className="btn btn-primary">See Profile</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  </div>
-                </div>
-                <div className="item">
-                  <div className="content-item">
-                  <div className="container mt-3 d-flex justify-content-center">
-                    <div className="card">
-                      <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                      <div className="card-body">
-                        <h4 className="card-title">John Doe</h4>
-                        <p className="card-text"></p>
-                        <a href="/" className="btn btn-primary">See Profile</a>
+                  <div className="item">
+                    <div className="content-item">
+                      <div className="container mt-3 d-flex justify-content-center">
+                        <div className="card">
+                          <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
+                          <div className="card-body">
+                            <h4 className="card-title">John Doe</h4>
+                            <p className="card-text"></p>
+                            <a href="/" className="btn btn-primary">See Profile</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  </div>
-                </div>
-                <div className="item">
-                  <div className="content-item">
-                  <div className="container mt-3 d-flex justify-content-center">
-                    <div className="card">
-                      <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                      <div className="card-body">
-                        <h4 className="card-title">John Doe</h4>
-                        <p className="card-text"></p>
-                        <a href="/" className="btn btn-primary">See Profile</a>
+                  <div className="item">
+                    <div className="content-item">
+                      <div className="container mt-3 d-flex justify-content-center">
+                        <div className="card">
+                          <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
+                          <div className="card-body">
+                            <h4 className="card-title">John Doe</h4>
+                            <p className="card-text"></p>
+                            <a href="/" className="btn btn-primary">See Profile</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  </div>
-                </div>
-                <div className="item">
-                  <div className="content-item">
-                  <div className="container mt-3 d-flex justify-content-center">
-                    <div className="card">
-                      <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                      <div className="card-body">
-                        <h4 className="card-title">John Doe</h4>
-                        <p className="card-text"></p>
-                        <a href="/" className="btn btn-primary">See Profile</a>
+                  <div className="item">
+                    <div className="content-item">
+                      <div className="container mt-3 d-flex justify-content-center">
+                        <div className="card">
+                          <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
+                          <div className="card-body">
+                            <h4 className="card-title">John Doe</h4>
+                            <p className="card-text"></p>
+                            <a href="/" className="btn btn-primary">See Profile</a>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <div className="item">
+                    <div className="content-item">
+                      <div className="container mt-3 d-flex justify-content-center">
+                        <div className="card">
+                          <img className="card-img-top" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
+                          <div className="card-body">
+                            <h4 className="card-title">John Doe</h4>
+                            <p className="card-text"></p>
+                            <a href="/" className="btn btn-primary">See Profile</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             </div>
           </div>
         </main >

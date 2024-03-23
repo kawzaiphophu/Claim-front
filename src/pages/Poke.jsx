@@ -88,7 +88,7 @@ function Poke() {
                         pokeData.map((pokemon, index) => (
                             <div key={pokemon.data.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                                 <div className="card bg-dark text-white position-relative" style={{ minHeight: "200px" }}>
-                                    <NavLink to="#" onClick={() => openModal(pokemon)}>
+                                    <NavLink to={`/pokemon/${pokemon.data.id}`}>
                                         <img
                                             src={pokemon.data.sprites.front_default}
                                             className="card-img"
@@ -115,23 +115,6 @@ function Poke() {
                     )}
 
                 </div>
-                {selectedPokemon && (
-                    <div className="modal fade show container-fluid" tabIndex="-1" role="dialog" style={{ display: isModalOpen ? 'block' : 'none', width: '100rem' }}>
-                    <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title">{selectedPokemon.data.name}</h5>
-                                <button type="button" className="btn-close" aria-label="Close" onClick={closeModal}></button>
-                            </div>
-                            <div className="modal-body">
-                                <PokemonDetails selectedPokemon={selectedPokemon} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                )}
-
-
             </div>
         </>
     );

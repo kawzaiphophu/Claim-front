@@ -20,6 +20,34 @@ hr {
 img{
     filter: drop-shadow(0 0 10px rgb(118, 171, 174,0.5));
 }
+.img {
+    position: relative;
+    display: inline-block; 
+  }
+
+  .img-1 {
+    width: 70%;
+    position: relative;
+    z-index: 1;
+    animation: rotateInfinity 5s infinite linear;
+  }
+  @keyframes rotateInfinity {
+    from {
+      transform: rotate(0deg); /* Start from no rotation */
+    }
+    to {
+      transform: rotate(360deg); /* Rotate 360 degrees */
+    }
+  }
+
+  .img-2 {
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    z-index: 2; 
+  }
 
 .section-1 {
     height: 100vh;
