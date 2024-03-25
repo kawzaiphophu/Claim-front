@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from '../component/Nav'
+
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../css/home.css'
 
@@ -7,7 +7,6 @@ import '../css/home.css'
 function Home() {
   return (
     <>
-      <Nav />
 
       <div className="grid-sm ">
         <header className="page-header py-5">

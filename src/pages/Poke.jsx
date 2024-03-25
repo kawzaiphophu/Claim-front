@@ -1,17 +1,14 @@
 import '../css/poke.css';
 import React, { useEffect, useState } from 'react';
-import Nav from '../component/Nav';
 import { NavLink } from 'react-router-dom';
 import { fetchPokemon } from '../help/pokemon';
-import PokemonDetails from '../component/PokemonDetails';
 function Poke() {
     const [isLoading, setIsLoading] = useState(false);
     const [pokeData, setPokedata] = useState([]);
     const [pagePokemon, setPagePokemon] = useState(1);
     const [searchTerm, setSearchTerm] = useState();
     const [filterType, setFilterType] = useState();
-    const [selectedPokemon, setSelectedPokemon] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+
 
     useEffect(() => {
         setIsLoading(true)
@@ -32,18 +29,11 @@ function Poke() {
         setTimeout(() => { setIsLoading(false); }
             , 300)
     }, [pagePokemon]);
-    const openModal = (pokemon) => {
-        setSelectedPokemon(pokemon);
-        setIsModalOpen(true);
-    };
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
 
     return (
         <>
-            <Nav />
+
             <div className='container w-75 h-100 py-5 my-5 pokemondiv'>
                 <h1 className='d-flex justify-content-center'> Pokémon</h1>
                 <div className="my-3 d-flex justify-content-between">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Nav from '../component/Nav';
+
 import axios from 'axios';
 import FormClaim from '../component/FormClaim';
 import ClaimTable from '../component/ClaimTable';
@@ -29,7 +29,6 @@ function ClaimList() {
 
   return (
     <>
-      <Nav />
       <div className='d-flex justify-content-end'>
         <div className="input-group m-3 w-50">
           <input

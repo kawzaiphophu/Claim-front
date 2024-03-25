@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import Nav from './Nav';
 import { useParams } from 'react-router-dom';
 import '../css/poke.css';
 
@@ -46,7 +45,6 @@ const PokemonDetails = (selectedPokemon) => {
 
     return (
         <div>
-            <Nav />
             <div className='container pt-5 mt-5' style={{ height: '100vh' }}>
                 <div className='text-center pokemondiv '>
                     <div className='d-flex justify-content-between '>
