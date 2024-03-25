@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const fetchPokemon = async (page=1,selectapi="pokemon",find = "findAll",subsearch = "") => {
     try {
-        const offset = (page - 1) * 20;
-        const limit = 20;
+        const offset = (page - 1) * 24;
+        const limit = 24;
         const apitype = (find === "findAll" ? `${selectapi}/?offset=${offset}&limit=${limit}/${subsearch}`: `${selectapi}/${find}/${subsearch}`);
         const response = await axios.get(`https://pokeapi.co/api/v2/${apitype}`);
         const pokemonArr = response.data.results;
@@ -40,8 +40,6 @@ const fetchPokemon = async (page=1,selectapi="pokemon",find = "findAll",subsearc
             }
         };
 
-
-  
         const pokemonData = await Promise.all(pokemonArr.map(  async (pokemon) => {
             try {
                 const data = await getPokemonData(pokemon);

@@ -11,23 +11,22 @@ function Poke() {
 
 
     useEffect(() => {
-        setIsLoading(true)
+        setIsLoading(true);
+    
         const getPokemon = async (pagePokemon) => {
             try {
-                fetchPokemon(pagePokemon)
-                    .then((pokemons) => {
-                        setPokedata(pokemons.pokeData);
-                        console.log(pokeData);
-                    })
-                    .catch((err) => console.log("fetch pokemon err"))
+                const pokemons = await fetchPokemon(pagePokemon);
+                setPokedata(pokemons.pokeData);
+                console.log(pokemons.pokeData);
+            } catch (err) {
+                console.log("fetch pokemon err", err);
             }
-            catch {
-                console.log("get pokemon error")
-            }
-        }
-        getPokemon(pagePokemon);
-        setTimeout(() => { setIsLoading(false); }
-            , 300)
+        };
+    
+        getPokemon(pagePokemon)
+            .then(() => setIsLoading(false))
+            .catch(() => setIsLoading(false));
+    
     }, [pagePokemon]);
 
 
@@ -58,7 +57,7 @@ function Poke() {
                 </div>
                 <div className='d-flex justify-content-between'>
                     <button className={`btn bg-dark text-light m-3 ${pagePokemon <= 1 ? 'disabled' : ''}`} type='button' onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon - 1); }}>prev</button>
-                    <button className={`btn bg-dark text-light m-3 ${pagePokemon > 20 ? 'disabled' : ''}`} onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon + 1); }}>next</button>
+                    <button className={`btn bg-dark text-light m-3 ${pagePokemon > 42 ? 'disabled' : ''}`} onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon + 1); }}>next</button>
                 </div>
 
                 <div className="row">

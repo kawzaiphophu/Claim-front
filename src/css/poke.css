@@ -1,17 +1,19 @@
 @import url('https://fonts.cdnfonts.com/css/pokemon-solid');
-.pokemondiv h1{
-    font-family: 'Pokemon Solid', sans-serif;
-    letter-spacing: 1rem;     
-    font-size: 2rem;                             
-}
-.pokemondiv p{
-    color: white;
+.pokemondiv h1{ 
+    font-size: 4rem;               
+    filter: drop-shadow(0 0 20px rgb(156, 247, 255));              
 }
 .pokemondiv{
     background-color: rgba(255, 255, 255, 0.253);
     border-radius: 20px;
-    
 }
+.pokemondiv div{
+    filter: drop-shadow(0 0 10px rgba(79, 195, 201, 0.5));    
+}
+.pokemondiv p{
+    color: white;
+}
+
 .loading{
     background-color: rgba(121, 121, 121, 0.151);
 }

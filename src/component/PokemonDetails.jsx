@@ -24,7 +24,6 @@ const PokemonDetails = (selectedPokemon) => {
 
         if (currentId !== null) {
             fetchPokemonDetails();
-            console.log(pokemonDetails);
         }
     }, [currentId]);
 
@@ -46,17 +45,34 @@ const PokemonDetails = (selectedPokemon) => {
     return (
         <div>
             <div className='container pt-5 mt-5' style={{ height: '100vh' }}>
-                <div className='text-center pokemondiv '>
-                    <div className='d-flex justify-content-between '>
-                        <div className={`btn btn-light fs-4 ${currentId <= 1 ? 'disabled' : ''}`} onClick={handlePrevClick}>Prev</div>
-                        <div className={`btn btn-light fs-4 ${currentId >= 1025 ? 'disabled' : ''}`} onClick={handleNextClick}>Next</div>
+                <div className='text-center pokemondiv container-fluid '>
+                    <div className='d-flex justify-content-between p-3 '>
+                        <div className={`btn btn-dark fs-4 ${currentId <= 1 ? 'disabled' : ''}`} onClick={handlePrevClick}>Prev</div>
+                        <div className={`btn btn-dark fs-4 ${currentId >= 1025 ? 'disabled' : ''}`} onClick={handleNextClick}>Next</div>
                     </div>
                     <h1 className=''>{pokemonDetails?.name} #{pokemonDetails?.id}</h1>
-                    <div className='img'>
+                    <div className='img py-5'>
                         <img className='img-1' src="https://th.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" alt="" />
                         <img className='mx-auto img-2 d-flex align-items-center pb-5 ' src={pokemonDetails?.sprites?.other?.home?.front_default} alt={pokemonDetails?.name} />
                     </div>
-                    <h2 className=''>weight : {pokemonDetails?.weight}   height : {pokemonDetails?.height} </h2>
+                    <div className='d-flex justify-content-between'>
+                        <div className='d-flex flex-column fs-3  w-50'>
+                            <div className='d-flex justify-content-start '>weight : {pokemonDetails?.weight}  </div>
+                            <div className='d-flex justify-content-start '>height : {pokemonDetails?.height} </div>
+                            <div className='d-flex justify-content-start '>Gender :  </div>
+                        </div>
+
+                        <div className='d-flex flex-column fs-3 w-50'>
+                            {pokemonDetails?.types && (
+                                <>
+                                    {pokemonDetails.types.map((type, index) => (
+                                        <span key={index}>{type.type.name}</span>
+                                    ))}
+                                </>
+                            )}
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
