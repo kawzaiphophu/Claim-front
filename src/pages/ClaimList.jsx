@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import axios from 'axios';
 import FormClaim from '../component/FormClaim';
 import ClaimTable from '../component/ClaimTable';
@@ -11,7 +10,7 @@ import '../css/claimlist.css'
 function ClaimList() {
   const [items, setItems] = useState([]);
   const [originalItems, setOriginalItems] = useState([]);
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState()
 
   useEffect(() => {
     fetchData();

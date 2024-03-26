@@ -3,12 +3,12 @@
     font-size: 4rem;               
     filter: drop-shadow(0 0 20px rgb(156, 247, 255));              
 }
-.pokemondiv{
+.pokemondiv {
     background-color: rgba(255, 255, 255, 0.253);
     border-radius: 20px;
 }
 .pokemondiv div{
-    filter: drop-shadow(0 0 10px rgba(79, 195, 201, 0.5));    
+    filter: drop-shadow(0 0 10px rgba(79, 195, 201, 0.5)); 
 }
 .pokemondiv p{
     color: white;
@@ -27,3 +27,103 @@
 .fs-10{
     font-size: small;
 }
+.pokeDetailDiv{
+    background: rgba(255, 255, 255, 0.199);
+    border-radius: 50px;
+    color: #ffffff;
+}
+
+
+/*===================== tyle of pokemon ===================== */
+.grass{
+    background: #90fcab;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.poison{
+    background: #5f0096;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.fire{
+    background: #ff5757;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.flying{
+    background: #ffffff;
+    color: rgb(146, 216, 243);
+    border-radius: 20px;
+}
+.water{
+    background: #319bff;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.bug{
+    background: #eeff07a6;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.normal{
+    background: #b4b4b4a6;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.electric{
+    background: rgb(243, 227, 0);
+    color: rgb(75, 73, 73);
+    border-radius: 20px;
+}
+.ground{
+    background: #ffc400;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.fairy{
+    background: #eb8aff;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.fighting{
+    background: #864227;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.psychic{
+    background: #ea00ff;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.rock{
+    background: #8f6d52;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.steel{
+    background: #bdbdbd;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.ice{
+    background: #c5edff;
+    color: rgb(122, 122, 122);
+    border-radius: 20px;
+}
+.ghost{
+    background: #4c2d7e;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.dark{
+    background: #534a45;
+    color: aliceblue;
+    border-radius: 20px;
+}
+.dragon{
+    background: #715c94;
+    color: aliceblue;
+    border-radius: 20px;
+}
+
+

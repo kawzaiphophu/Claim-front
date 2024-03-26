@@ -56,6 +56,7 @@ function FormClaim() {
                         from: { value: 'สาขา ...' },
                     });
                     alert("บันทึกข้อมูลเรียบร้อยแล้ว");
+                    console.log(formData);
                 } else {
                     e.preventDefault();
                     alert("กรุณาใส่เบอร์โทรศัพท์ที่มีความยาวเท่ากับ 10 หลัก");
@@ -82,7 +83,7 @@ function FormClaim() {
                             name='name'
                             placeholder="ชื่อลูกค้า"
                             autoComplete="off"
-                            // value={formData.name.value}
+                            value={formData.name.value}
                             onChange={(e) => handleChange("name", e)}
                         />
                         <label htmlFor="name">ชื่อลูกค้า</label>

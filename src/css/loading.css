@@ -10,5 +10,6 @@
     justify-content: center;
     align-items: center;
     color: white; /* Text color */
+    transition: opacity 0.3s ease
   }
   
