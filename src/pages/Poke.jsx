@@ -12,31 +12,36 @@ function Poke() {
     const [pokeFilterType, setPokeFilterType] = useState();
 
 
-    // useEffect(() => {
-       
-
-    // }, [pagePokemon]);
-
     useEffect(() => {
         const getPokemonByType = async () => {
             try {
                 if (filterType >= 1) {
-                    const response = await axios.get(`https://pokeapi.co/api/v2/type/${filterType}`);
-                    setIsLoading(true)
-                    const pokemonByType = response.data.pokemon;  
-                    const pokemonData = await Promise.all(pokemonByType.map(  async (pokemon) => {
-                        try {
-                            const data = await axios.get(pokemon.pokemon.url);
-                            return data;
-                        } catch (error) {
-                            console.error(`Error fetching data for ${pokemon.name}: ${error}`);
-                            return null;
-                        }
-                    }));   
-                    setPokeFilterType(pokemonData)  
-                    setIsLoading(false)
-                    console.log("1");
-                }else {
+                    setIsLoading(true);
+                    try {
+                        const response = await axios.get(`https://pokeapi.co/api/v2/type/${filterType}`);
+                        const pokemonByType = response.data.pokemon;
+                        const pokemonData = await Promise.all(pokemonByType.map(async (pokemon) => {
+                            const match = pokemon.pokemon.url.match(/\/(\d+)\/$/);
+                            const pokeId = match && parseInt(match[1]); 
+                            if (pokeId >= 1 && pokeId <= 1025) { 
+                                try {
+                                    const data = await axios.get(pokemon.pokemon.url);
+                                    return data;
+                                } catch (error) {
+                                    console.error(`Error fetching data for ${pokemon.name}: ${error}`);
+                                    return null;
+                                }
+                            } else {
+                                return null;
+                            }
+                        }));
+                        setPokeFilterType(pokemonData.filter(data => data !== null));
+                    } catch (error) {
+                        console.error(`Error fetching Pokémon data: ${error}`);
+                    } finally {
+                        setIsLoading(false);
+                    }
+                } else {
                     setIsLoading(true);
                     const getPokemon = async (pagePokemon) => {
                         try {
@@ -46,7 +51,7 @@ function Poke() {
                             console.log("fetch pokemon err", err);
                         }
                     };
-            
+
                     getPokemon(pagePokemon)
                         .then(() => setIsLoading(false))
                         .catch(() => setIsLoading(true));
@@ -56,12 +61,12 @@ function Poke() {
             }
         };
         getPokemonByType();
-    }, [filterType,pagePokemon]);
+    }, [filterType, pagePokemon]);
 
 
     let flattenedArray = [];
     if (pokeFilterType) {
-      flattenedArray = pokeFilterType.reduce((acc, curr) => acc.concat(curr), []);
+        flattenedArray = pokeFilterType.reduce((acc, curr) => acc.concat(curr), []);
     }
     const displayedPokemon = filterType ? flattenedArray : pokeData;
     return (
@@ -75,7 +80,7 @@ function Poke() {
                         className="form-control me-2"
                         placeholder="Search by name"
                         value={searchTerm}
-                        onChange={(e) =>{setIsLoading(true); setSearchTerm(e.target.value);}}
+                        onChange={(e) => { setIsLoading(false); setSearchTerm(e.target.value); }}
                     />
                     <select
                         className="form-select"
@@ -103,8 +108,8 @@ function Poke() {
                     </select>
                 </div>
                 <div className='d-flex justify-content-between'>
-                    <button className={`btn bg-dark text-light m-3 ${pagePokemon <= 1 || filterType >= 1? 'disabled' : ''}`} type='button' onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon - 1); }}>prev</button>
-                    <button className={`btn bg-dark text-light m-3 ${pagePokemon >= 43 || filterType >= 1? 'disabled' : ''}`} onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon + 1); }}>next</button>
+                    <button className={`btn bg-dark text-light m-3 ${pagePokemon <= 1 || filterType >= 1 ? 'disabled' : ''}`} type='button' onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon - 1); }}>prev</button>
+                    <button className={`btn bg-dark text-light m-3 ${pagePokemon >= 43 || filterType >= 1 ? 'disabled' : ''}`} onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon + 1); }}>next</button>
                 </div>
                 <div className="row">
                     {isLoading ? (
@@ -149,7 +154,7 @@ function Poke() {
                         ))
                     )
                     }
-                    
+
 
                 </div>
             </div>
