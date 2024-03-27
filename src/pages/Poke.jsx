@@ -1,77 +1,67 @@
 import '../css/poke.css';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { fetchPokemon } from '../help/pokemon';
-import axios from 'axios';
+import { fetchPokemon,listPokemonSearch } from '../help/pokemon';
+// import { pokemonNameList, } from "../data/pokemonNameList"
+import { pokemonType } from '../data/pokemonType'
+
 function Poke() {
     const [isLoading, setIsLoading] = useState(false);
     const [pokeData, setPokedata] = useState([]);
     const [pagePokemon, setPagePokemon] = useState(1);
     const [searchTerm, setSearchTerm] = useState();
     const [filterType, setFilterType] = useState(0);
-    const [pokeFilterType, setPokeFilterType] = useState();
-
 
     useEffect(() => {
-        const getPokemonByType = async () => {
-            try {
-                if (filterType >= 1) {
-                    setIsLoading(true);
-                    try {
-                        const response = await axios.get(`https://pokeapi.co/api/v2/type/${filterType}`);
-                        const pokemonByType = response.data.pokemon;
-                        const pokemonData = await Promise.all(pokemonByType.map(async (pokemon) => {
-                            const match = pokemon.pokemon.url.match(/\/(\d+)\/$/);
-                            const pokeId = match && parseInt(match[1]); 
-                            if (pokeId >= 1 && pokeId <= 1025) { 
-                                try {
-                                    const data = await axios.get(pokemon.pokemon.url);
-                                    return data;
-                                } catch (error) {
-                                    console.error(`Error fetching data for ${pokemon.name}: ${error}`);
-                                    return null;
-                                }
-                            } else {
-                                return null;
-                            }
-                        }));
-                        setPokeFilterType(pokemonData.filter(data => data !== null));
-                    } catch (error) {
-                        console.error(`Error fetching Pokémon data: ${error}`);
-                    } finally {
-                        setIsLoading(false);
-                    }
-                } else {
-                    setIsLoading(true);
-                    const getPokemon = async (pagePokemon) => {
-                        try {
-                            const pokemons = await fetchPokemon(pagePokemon);
-                            setPokedata(pokemons.pokeData);
-                        } catch (err) {
-                            console.log("fetch pokemon err", err);
-                        }
-                    };
-
-                    getPokemon(pagePokemon)
-                        .then(() => setIsLoading(false))
-                        .catch(() => setIsLoading(true));
+        try {
+            const getPokemon = async (pagePokemon) => {
+                try {
+                    const pokemons = await fetchPokemon(pagePokemon);
+                    setPokedata(pokemons.pokeData);
+                } catch (err) {
+                    console.log("fetch pokemon err", err);
                 }
-            } catch (error) {
-                console.log("Error fetching Pokémon by type:", error);
+            };
+            setIsLoading(true);
+            getPokemon()
+            setIsLoading(false)
+        } catch (error) {
+            console.log("Error fetching Pokémon by type:", error);
+        }
+    }, [pagePokemon])
+
+    const searchByType = async (filterType) => {
+        try {
+            if (filterType >= 1) {
+                setIsLoading(true);
+                const pokemons = await fetchPokemon(1, "type", filterType);
+                setPokedata(pokemons.pokeData)
+                setIsLoading(false)
+            } else {
+                setIsLoading(true);
+                const pokemons = await fetchPokemon(pagePokemon);
+                setPokedata(pokemons.pokeData)
+                setIsLoading(false)
+                console.log("1");
             }
-        };
-        getPokemonByType();
-    }, [filterType, pagePokemon]);
-
-
-    let flattenedArray = [];
-    if (pokeFilterType) {
-        flattenedArray = pokeFilterType.reduce((acc, curr) => acc.concat(curr), []);
+        } catch (error) {
+            console.log("fetch pokeType err", error);
+        }
     }
-    const displayedPokemon = filterType ? flattenedArray : pokeData;
+    const searchByName = async(x) =>{
+       if (searchTerm != null) {
+        try {
+            setIsLoading(true);
+            const data = await listPokemonSearch(x)
+            setPokedata(data)
+            setIsLoading(false);
+        } catch (error) {
+            console.log(error);
+        }
+       }
+    }
     return (
         <>
-
             <div className='container w-75 h-100 py-5 my-5 pokemondiv'>
                 <h1 className='d-flex justify-content-center'> Pokémon</h1>
                 <div className="my-3 d-flex justify-content-between">
@@ -80,31 +70,16 @@ function Poke() {
                         className="form-control me-2"
                         placeholder="Search by name"
                         value={searchTerm}
-                        onChange={(e) => { setIsLoading(false); setSearchTerm(e.target.value); }}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                     />
+                    <div className="btn btn-dark m-2" onClick={()=>searchByName(searchTerm)}>Search</div>
                     <select
                         className="form-select"
                         value={filterType}
-                        onChange={(e) => { setIsLoading(true); setFilterType(e.target.value); }}>
-                        <option value="">All Types</option>
-                        <option value="1">Normal</option>
-                        <option value="10">Fire</option>
-                        <option value="11">Water</option>
-                        <option value="13">Electric</option>
-                        <option value="12">Grass</option>
-                        <option value="15">Ice</option>
-                        <option value="2">Fighting</option>
-                        <option value="4">Poison</option>
-                        <option value="5">Groud</option>
-                        <option value="3">Flying</option>
-                        <option value="14">Psychic</option>
-                        <option value="7">Bug</option>
-                        <option value="6">Rock</option>
-                        <option value="8">Ghost</option>
-                        <option value="16">Dragon</option>
-                        <option value="17">Dark</option>
-                        <option value="9">Steel</option>
-                        <option value="18">Fairy</option>
+                        onChange={(e) => { setIsLoading(true); setFilterType(e.target.value.name); searchByType(e.target.value) }}>
+                        {pokemonType.map((type, index) => {
+                            return <option value={type.id} key={index}>{type.name}</option>
+                        })}
                     </select>
                 </div>
                 <div className='d-flex justify-content-between'>
@@ -113,7 +88,7 @@ function Poke() {
                 </div>
                 <div className="row">
                     {isLoading ? (
-                        displayedPokemon.map((pokemon, index) => (
+                        pokeData.map((pokemon, index) => (
                             <div key={index} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 '>
                                 <div className="card loading">
                                     <div className="card-body" style={{ height: "200px" }}>
@@ -125,7 +100,7 @@ function Poke() {
                             </div>
                         ))
                     ) : (
-                        displayedPokemon.map((pokemon, index) => (
+                        pokeData.map((pokemon, index) => (
                             <div key={pokemon.data.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                                 <div className="card bg-dark text-white position-relative" style={{ minHeight: "200px" }}>
                                     <NavLink to={`/pokemon/${pokemon.data.id}`}>
@@ -154,8 +129,6 @@ function Poke() {
                         ))
                     )
                     }
-
-
                 </div>
             </div>
         </>
