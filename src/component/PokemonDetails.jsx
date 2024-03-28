@@ -64,16 +64,13 @@ const PokemonDetails = (selectedPokemon) => {
                             </>
                         )}
                     </div>
-                    <div className='pokeDetailDiv d-flex flex-column justify-content-start px-4 my-3 mx-auto w-25'>
-
-                    </div>
-                    <div className='pokeDetailDiv d-flex justify-content-between px-4 my-3 mx-auto w-75'>
-                        <div className='d-flex flex-column fs-4 w-50 py-3 m-3 '>
+                    <div className='pokeDetailDiv d-flex justify-content-between px-4 my-3 mx-auto w-100'>
+                        <div className='d-flex flex-column fs-4 w-50 py-3 '>
                             <div className='fs-3'>Info</div>
-                            <div className='fs-5 text-start'>weight : {pokemonDetails?.weight} kg </div>
-                            <div className='fs-5 text-start'>height : {pokemonDetails?.height} ft </div>
+                            <div className='fs-5 text-start'>weight : {pokemonDetails?.weight} </div>
+                            <div className='fs-5 text-start'>height : {pokemonDetails?.height}</div>
                         </div>
-                        <div className='d-flex flex-column fs-5 w-50 py-3 m-3 '>
+                        <div className='d-flex flex-column fs-5 w-50 py-3'>
                             <div className='fs-3'>Ability</div>
                             {pokemonDetails?.abilities && (
                                 <>
@@ -81,7 +78,7 @@ const PokemonDetails = (selectedPokemon) => {
                                         <div key={index}>
                                             {ability.is_hidden ? (
                                                 <>
-                                                    <div className='fs-5 text-start'> {ability.ability.name} **</div>
+                                                    <div className='fs-5 text-start'> {ability.ability.name}*</div>
                                                 </>
                                             ) : (
                                                 <div className='fs-5 text-start'>{ability.ability.name}</div>
@@ -92,7 +89,7 @@ const PokemonDetails = (selectedPokemon) => {
                             )}
 
                         </div>
-                        <div className='d-flex flex-column fs-5 w-50 py-3 m-3 '>
+                        <div className='d-flex flex-column fs-5 w-75 py-3 p-1' >
                             <div className='fs-3'> Stat </div>
                             {pokemonDetails?.stats && (
                                 <>
@@ -118,7 +115,7 @@ const PokemonDetails = (selectedPokemon) => {
                                         name: move.move.name,
                                         levelLearned: move.version_group_details.find(details => details.move_learn_method.name === "level-up")
                                     }))
-                                    .filter(move => move.levelLearned) 
+                                    .filter(move => move.levelLearned)
                                     .sort((a, b) => a.levelLearned.level_learned_at - b.levelLearned.level_learned_at)
                                     .map((move, index) => (
                                         <div key={index} className='row fs-5 p-1'>

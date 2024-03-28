@@ -16,18 +16,18 @@ function Poke() {
         try {
             const getPokemon = async (pagePokemon) => {
                 try {
+                    setIsLoading(true);
                     const pokemons = await fetchPokemon(pagePokemon);
                     setPokedata(pokemons.pokeData);
                 } catch (err) {
                     console.log("fetch pokemon err", err);
                 }
             };
-            setIsLoading(true);
             getPokemon(pagePokemon);
-            setIsLoading(false);
         } catch (error) {
             console.log("Error fetching Pokémon by type:", error);
         }
+        setIsLoading(false);
     }, [pagePokemon]);
 
     const searchByType = async (filterType) => {
@@ -40,14 +40,16 @@ function Poke() {
                 setIsLoading(false)
             } else {
                 setIsLoading(true);
+                setPagePokemon(1);
+                setFilterType()
                 const pokemons = await fetchPokemon(pagePokemon);
                 setPokedata(pokemons.pokeData)
                 setIsLoading(false)
-                console.log("1");
             }
         } catch (error) {
             console.log("fetch pokeType err", error);
         }
+        
     }
     const searchByName = async (x) => {
         if (searchTerm != null) {
@@ -83,15 +85,15 @@ function Poke() {
                     <select
                         className="form-select"
                         value={filterType}
-                        onChange={(e) => { setIsLoading(true); setFilterType(e.target.value.name); searchByType(e.target.value) }}>
+                        onChange={(e) => { setIsLoading(true); setFilterType(e.target.value); searchByType(e.target.value) }}>
                         {pokemonType.map((type, index) => {
                             return <option value={type.id} key={index}>{type.name}</option>
                         })}
                     </select>
                 </div>
-                <div className='d-flex justify-content-between'>
-                    <button className={`btn bg-dark text-light m-3 ${pagePokemon <= 1 || filterType >= 1 ? 'disabled' : ''}`} type='button' onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon - 1); }}>prev</button>
-                    <button className={`btn bg-dark text-light m-3 ${pagePokemon >= 43 || filterType >= 1 ? 'disabled' : ''}`} onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon + 1); }}>next</button>
+                <div className={`d-flex justify-content-between ${Number(filterType) > 0 ? 'd-none' : ''}`}>
+                    <button className={`btn bg-dark text-light m-3 ${pagePokemon <= 1 ? 'disabled' : ''}`} type='button' onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon - 1); }}>prev</button>
+                    <button className={`btn bg-dark text-light m-3 ${pagePokemon >= 43 ? 'disabled' : ''}`} type='button' onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon + 1); }}>next</button>
                 </div>
                 <div className="row">
                     {isLoading ? (
