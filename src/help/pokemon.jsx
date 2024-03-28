@@ -26,7 +26,6 @@ const fetchPokemon = async (page=1,selectapi="pokemon",find ="findAll",subsearch
                 
                 const match = pokemon.url.match(/\/(\d+)\/$/);
                 const pokeId = match && match[1];
-                
                 if(Number(pokeId) > 10000){
                   return null;
                 }
@@ -53,7 +52,6 @@ const fetchPokemon = async (page=1,selectapi="pokemon",find ="findAll",subsearch
                 return null;
             }
         }));
-        console.log(pokemonData);
          return {pokeData:pokemonData.filter((pokemon) => pokemon !== null),alllength:pokemonArr.length};
     } 
     

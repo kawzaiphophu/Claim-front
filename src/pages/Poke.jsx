@@ -1,7 +1,7 @@
 import '../css/poke.css';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { fetchPokemon,listPokemonSearch } from '../help/pokemon';
+import { fetchPokemon, listPokemonSearch } from '../help/pokemon';
 // import { pokemonNameList, } from "../data/pokemonNameList"
 import { pokemonType } from '../data/pokemonType'
 
@@ -23,17 +23,18 @@ function Poke() {
                 }
             };
             setIsLoading(true);
-            getPokemon()
-            setIsLoading(false)
+            getPokemon(pagePokemon);
+            setIsLoading(false);
         } catch (error) {
             console.log("Error fetching Pokémon by type:", error);
         }
-    }, [pagePokemon])
+    }, [pagePokemon]);
 
     const searchByType = async (filterType) => {
         try {
             if (filterType >= 1) {
                 setIsLoading(true);
+                setPagePokemon(0);
                 const pokemons = await fetchPokemon(1, "type", filterType);
                 setPokedata(pokemons.pokeData)
                 setIsLoading(false)
@@ -48,31 +49,37 @@ function Poke() {
             console.log("fetch pokeType err", error);
         }
     }
-    const searchByName = async(x) =>{
-       if (searchTerm != null) {
-        try {
-            setIsLoading(true);
-            const data = await listPokemonSearch(x)
-            setPokedata(data)
-            setIsLoading(false);
-        } catch (error) {
-            console.log(error);
+    const searchByName = async (x) => {
+        if (searchTerm != null) {
+            try {
+                setIsLoading(true);
+                setPagePokemon(0);
+                const data = await listPokemonSearch(x)
+                setPokedata(data)
+                setIsLoading(false);
+            } catch (error) {
+                console.log(error);
+            }
         }
-       }
     }
     return (
         <>
             <div className='container w-75 h-100 py-5 my-5 pokemondiv'>
-                <h1 className='d-flex justify-content-center'> Pokémon</h1>
+                <div className='btn d-flex justify-content-center' style={{ textAlign: 'center' }} onClick={() => setPagePokemon(1)}>
+                    <h1>Pokémon</h1>
+                </div>
                 <div className="my-3 d-flex justify-content-between">
-                    <input
-                        type="text"
-                        className="form-control me-2"
-                        placeholder="Search by name"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                    <div className="btn btn-dark m-2" onClick={()=>searchByName(searchTerm)}>Search</div>
+                    <div className="input-group ">
+                        <input type="text"
+                            className="form-control"
+                            placeholder="Search Pokémon By Name"
+                            aria-label="Recipient's username"
+                            aria-describedby="button-addon2"
+                            onChange={(e) => setSearchTerm(e.target.value)} />
+                        <button className="btn btn-dark me-2"
+                            type="button" id="button-addon2"
+                            onClick={() => searchByName(searchTerm)}>Button</button>
+                    </div>
                     <select
                         className="form-select"
                         value={filterType}
