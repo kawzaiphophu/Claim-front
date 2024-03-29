@@ -26,9 +26,11 @@ function Poke() {
             getPokemon(pagePokemon);
         } catch (error) {
             console.log("Error fetching Pokémon by type:", error);
+        } finally {
+            setIsLoading(false);
         }
-        setIsLoading(false);
-    }, [pagePokemon]);
+       
+    }, [pagePokemon,filterType]);
 
     const searchByType = async (filterType) => {
         try {
@@ -37,17 +39,17 @@ function Poke() {
                 setPagePokemon(0);
                 const pokemons = await fetchPokemon(1, "type", filterType);
                 setPokedata(pokemons.pokeData)
-                setIsLoading(false)
             } else {
                 setIsLoading(true);
                 setPagePokemon(1);
                 setFilterType()
                 const pokemons = await fetchPokemon(pagePokemon);
                 setPokedata(pokemons.pokeData)
-                setIsLoading(false)
             }
         } catch (error) {
             console.log("fetch pokeType err", error);
+        } finally {
+            setIsLoading(false)
         }
         
     }
