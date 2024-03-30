@@ -49,7 +49,9 @@ img{
     transform: translate(-50%, -50%);
     z-index: 2; 
   }
-
+  .section-0 {
+    height: 80vh;
+}
 .section-1 {
     height: 100vh;
 }

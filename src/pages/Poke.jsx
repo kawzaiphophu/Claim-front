@@ -2,11 +2,10 @@ import '../css/poke.css';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { fetchPokemon, listPokemonSearch } from '../help/pokemon';
-// import { pokemonNameList, } from "../data/pokemonNameList"
 import { pokemonType } from '../data/pokemonType'
 
 function Poke() {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [pokeData, setPokedata] = useState([]);
     const [pagePokemon, setPagePokemon] = useState(1);
     const [searchTerm, setSearchTerm] = useState();
@@ -19,6 +18,7 @@ function Poke() {
                     setIsLoading(true);
                     const pokemons = await fetchPokemon(pagePokemon);
                     setPokedata(pokemons.pokeData);
+                    setIsLoading(false);
                 } catch (err) {
                     console.log("fetch pokemon err", err);
                 }
@@ -26,43 +26,33 @@ function Poke() {
             getPokemon(pagePokemon);
         } catch (error) {
             console.log("Error fetching Pokémon by type:", error);
-        } finally {
-            setIsLoading(false);
-        }
-       
+        } 
     }, [pagePokemon,filterType]);
 
     const searchByType = async (filterType) => {
         try {
             if (filterType >= 1) {
                 setIsLoading(true);
-                setPagePokemon(0);
                 const pokemons = await fetchPokemon(1, "type", filterType);
                 setPokedata(pokemons.pokeData)
+                // setIsLoading(false);
             } else {
                 setIsLoading(true);
                 setPagePokemon(1);
-                setFilterType()
-                const pokemons = await fetchPokemon(pagePokemon);
-                setPokedata(pokemons.pokeData)
             }
         } catch (error) {
             console.log("fetch pokeType err", error);
-        } finally {
-            setIsLoading(false)
         }
-        
     }
     const searchByName = async (x) => {
         if (searchTerm != null) {
             try {
                 setIsLoading(true);
-                setPagePokemon(0);
                 const data = await listPokemonSearch(x)
                 setPokedata(data)
                 setIsLoading(false);
             } catch (error) {
-                console.log(error);
+                console.log("1");
             }
         }
     }
@@ -82,7 +72,7 @@ function Poke() {
                             onChange={(e) => setSearchTerm(e.target.value)} />
                         <button className="btn btn-dark me-2"
                             type="button" id="button-addon2"
-                            onClick={() => searchByName(searchTerm)}>Button</button>
+                            onClick={() => searchByName(searchTerm)}>Search</button>
                     </div>
                     <select
                         className="form-select"
@@ -99,17 +89,16 @@ function Poke() {
                 </div>
                 <div className="row">
                     {isLoading ? (
-                        pokeData.map((pokemon, index) => (
+                        <>
+                        {[...Array(24)].map((_, index) => (
                             <div key={index} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 '>
                                 <div className="card loading">
                                     <div className="card-body" style={{ height: "200px" }}>
-                                        <h5 className="card-title"> </h5>
-                                        <p className="card-text"> </p>
-                                        <p className="card-text"> <small className="text-muted"></small></p>
                                     </div>
                                 </div>
                             </div>
-                        ))
+                        ))}
+                    </>
                     ) : (
                         pokeData.map((pokemon, index) => (
                             <div key={pokemon.data.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
