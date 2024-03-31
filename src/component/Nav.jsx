@@ -66,11 +66,6 @@ function Nav() {
                   to="/ClaimList"> Claim</NavLink></li>
                 <li><NavLink className="dropdown-item "
                   to="/Pokemon"> Poke</NavLink></li>
-                <li><NavLink className="dropdown-item "
-                  to="test"> test</NavLink></li>
-                <li><hr className="dropdown-divider" /></li>
-                <li><NavLink className="dropdown-item "
-                  to="1">test2</NavLink></li>
               </ul>
             </li>
           </ul>
