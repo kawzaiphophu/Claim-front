@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Slide from '../component/Slide';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../css/home.css'
 import hill1 from '../img/hill1.png'
@@ -9,20 +10,16 @@ import hill5 from '../img/hill5.png'
 import leaf from '../img/leaf.png'
 import plant from '../img/plant.png'
 import tree from '../img/tree.png'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import 'animate.css';
 
 function Home() {
-  const [scrollY, setScrollY] = useState(20);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
-    AOS.init();
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -47,12 +44,7 @@ function Home() {
 
         {/* /* about me */}
         <section id='about' className='py-3'></section>
-        <main className="page-main"
-          data-aos="fade-up"
-          data-aos-offset="200"
-          data-aos-delay="50"
-          data-aos-duration="1000"
-          data-aos-easing="ease-in-out">
+        <main className="page-main ">
           <div className="content">
             <div className='container-sm section-1'>
               <h1 className='sub-header'>About Me</h1>
@@ -62,119 +54,13 @@ function Home() {
               </div>
               <h2 className='d-flex p-2'>My Name Is Kaw </h2>
               <p className='d-flex p-2 ps-5'>
-                {`I'm 24 year old My Name is Somboon Zaiphophu my Nickname is Kaw I am 25 years old. Nationality Thai. ethnicity Thai. My Github :`}
+                {`My Name is Somboon Zaiphophu my Nickname is Kaw I am 25 years old. Nationality Thai. ethnicity Thai. My Github :`}
               </p>
-
-              {/* <div className='container-fluid-sm w-100 d-flex justify-content-center'>
-                <div className="grid-item content ">
-                  <div className="content-item">
-                    <div className="container mb-3 d-flex justify-content-center h-100">
-                      <div className="card w-100 m4">
-                        <div className="card-body w-100 ">
-                          <h2 className="card-title">Front-End Skill </h2>
-                          <p className="card-text ms-2">
-                            <p>HTML</p>
-                            <p>CSS</p>
-                            <p>JavaScript</p>
-                            <p>React</p>
-                            <p>Bootstrap 5</p>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="content-item">
-                    <div className="container mb-3 d-flex justify-content-center h-100">
-                      <div className="card w-100 m-3">
-                        <div className="card-body w-100">
-                          <h2 className="card-title">Back-End Skill </h2>
-                          <p className="card-text">
-                            <p>JavaScript</p>
-                            <p>NodeJs</p>
-                            <p>ExpressJs</p>
-                          </p>
-                          <h2 className="card-title">Data Base</h2>
-                          <p className="card-text">
-                            <p>MongoDB</p>
-                            <p>Mongoose</p>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="content-item">
-                    <div className="container mb-3 d-flex justify-content-center h-100">
-                      <div className="card w-100 m-3">
-                        <div className="card-body w-100">
-                          <h2 className="card-title">Other</h2>
-                          <p className="card-text">
-                            <p>Git</p>
-                            <p>GitHub</p>
-                            <p>PostMan</p>
-                            <p>VScode</p>
-                          </p>
-
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
+              <Slide/>
             </div>
             <hr />
             <h1 className='my-5'>MY ProJect</h1>
-            <div className="container d-flex justify-content-center">
-
-              <div className='  container-fluid-sm w-100 d-flex justify-content-between'>
-                <div className="grid-item content"
-                  data-aos="fade-up"
-                  data-aos-offset="200"
-                  data-aos-delay="50"
-                  data-aos-duration="1000"
-                  data-aos-easing="ease-in-out">
-                  <div className="content-item">
-                    <div className="container my-3 d-flex justify-content-center">
-                      <div className="card">
-                        <img className="card-img-padding" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                        <div className="card-body">
-                          <h4 className="card-title">John Doe</h4>
-                          <p className="card-text"></p>
-                          <a href="/" className="btn btn-primary">See Profile</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    <div className="content-item">
-                      <div className="container my-3 d-flex justify-content-center">
-                        <div className="card">
-                          <img className="card-img-padding" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                          <div className="card-body">
-                            <h4 className="card-title">John Doe</h4>
-                            <p className="card-text"></p>
-                            <a href="/" className="btn btn-primary">See Profile</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="item">
-                    <div className="content-item">
-                      <div className="container my-3 d-flex justify-content-center">
-                        <div className="card">
-                          <img className="card-img-padding" src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2ViJTIwZGVzaWdufGVufDB8fDB8fHww" alt='' style={{ width: '100%' }} />
-                          <div className="card-body">
-                            <h4 className="card-title">John Doe</h4>
-                            <p className="card-text"></p>
-                            <a href="/" className="btn btn-primary">See Profile</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+           
           </div>
         </main >
         <footer className="page-footer">

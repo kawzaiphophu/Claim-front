@@ -11,23 +11,24 @@ function Poke() {
     const [searchTerm, setSearchTerm] = useState();
     const [filterType, setFilterType] = useState(0);
 
+    const getPokemon = async (pagePokemon) => {
+        try {
+            setIsLoading(true);
+            const pokemons = await fetchPokemon(pagePokemon);
+            setPokedata(pokemons.pokeData);
+            setIsLoading(false);
+            console.log("normal");
+        } catch (err) {
+            console.log("fetch pokemon err", err);
+        }
+    };
     useEffect(() => {
         try {
-            const getPokemon = async (pagePokemon) => {
-                try {
-                    setIsLoading(true);
-                    const pokemons = await fetchPokemon(pagePokemon);
-                    setPokedata(pokemons.pokeData);
-                    setIsLoading(false);
-                } catch (err) {
-                    console.log("fetch pokemon err", err);
-                }
-            };
             getPokemon(pagePokemon);
         } catch (error) {
             console.log("Error fetching Pokémon by type:", error);
         } 
-    }, [pagePokemon,filterType]);
+    }, [pagePokemon]);
 
     const searchByType = async (filterType) => {
         try {
@@ -35,10 +36,12 @@ function Poke() {
                 setIsLoading(true);
                 const pokemons = await fetchPokemon(1, "type", filterType);
                 setPokedata(pokemons.pokeData)
-                // setIsLoading(false);
+                setIsLoading(false);
+                console.log("type");
             } else {
                 setIsLoading(true);
-                setPagePokemon(1);
+                getPokemon(pagePokemon)
+                console.log("return normal");
             }
         } catch (error) {
             console.log("fetch pokeType err", error);
