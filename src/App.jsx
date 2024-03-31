@@ -28,7 +28,7 @@ const App = () => {
         <Loading />
       ) : (
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home/>} />
           <Route path="/claimlist" element={<ClaimList />} />
           <Route path="/about" element={<About />} />
           <Route path="/pokemon/*" element={<PokemonRoutes />} />

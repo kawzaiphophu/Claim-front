@@ -61,37 +61,7 @@ img{
     border-radius: 40px;
 }
 
-/*-------------- Grid-------------- */
-.grid {
-    display: grid;
-    grid-template-columns: 200px auto;
-    grid-template-rows: 100px minmax(160px, auto) auto;
-    grid-template-areas:
-        'header header'
-        'main main'
-        'submain submain'
-        'footer footer';
-    column-gap: 7px;
-    row-gap: 10rem;
-    
-}
 
-.page-header {
-    grid-area: header;
-}
-
-.page-main {
-    grid-area: main;
-}
-
-.page-submain {
-    grid-area: submain;
-
-}
-
-.page-footer {
-    grid-area: footer;
-}
 
 .content {
     text-align: center;
@@ -134,7 +104,7 @@ img{
     right: 0;
     width: 2px;
     height: 100%;
-    background: #76ABAE;
+    background: #ffffff;
     animation: cursorBlink 0.8s steps(3) infinite;
     
 }
@@ -155,17 +125,19 @@ img{
 .typing {
     position: relative;
     -webkit-box-reflect: below 20px linear-gradient(transparent, #3333);
+    
 }
 
 .typing h2 {
     margin: 0px;
     position: relative;
-    color: #76ABAE;
+    color: #ffffff;
     letter-spacing: 2px;
-    font-size: 3rem;
+    font-size: 5em;
     overflow: hidden;
     animation: type 3s steps(20);
     display: inline-block;
+    padding-right: 20px;
     
 }
 
@@ -180,6 +152,34 @@ img{
         width: 100%;
 
     }
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.parallax{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    
+}
+.parallax img {
+    filter: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
 }
 
 @media(max-width: 768px) {
@@ -201,6 +201,7 @@ img{
         animation: type 3s steps(20);
         display: inline-block
     }
+
 }
 
 @media(max-width: 414px) {
@@ -225,5 +226,10 @@ img{
         100% {
             width: 305px;
         }
+    }
+}
+@media(max-width:1919px){
+    .parallax img {
+        width: auto;
     }
 }

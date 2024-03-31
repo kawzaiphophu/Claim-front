@@ -22,11 +22,17 @@ function Nav() {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos, visible]);
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className={`navbar sticky-top navbar-expand-sm fs-5 p-0  ${visible ? 'navbar--show' : 'navbar--hidden'}`}>
       <div className="container-fluid ps-1">
-        <NavLink className="navbar-brand"
+        <NavLink className="navbar-brand "
           to="/">
           <img src="https://cdn-icons-png.freepik.com/256/10137/10137151.png?ga=GA1.1.1207387130.1709617310&" alt="" />
         </NavLink>
@@ -44,7 +50,7 @@ function Nav() {
               <NavLink className="nav-link ps-3" to="/">Home</NavLink>
             </li>
             <li>
-              <NavLink className="nav-link ps-3" to="/about">About</NavLink>
+              <NavLink className="nav-link ps-3" to="/" onClick={scrollToAbout}>About</NavLink>
             </li>
             <li className="nav-item dropdown ps-2">
               <NavLink className="nav-link dropdown-toggle"
@@ -70,22 +76,7 @@ function Nav() {
           </ul>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
-
-
   );
 }
 
