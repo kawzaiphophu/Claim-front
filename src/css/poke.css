@@ -17,11 +17,11 @@
 .loading{
     background-color: rgba(121, 121, 121, 0.151);
 }
-.card{
+.card-pokemon{
     transition: transform 0.2s ease;
 }
-.card:hover{
-    transform: scale(1.1);
+.card-pokemon:hover{
+    transform: scale(1.02);
 }
 
 .fs-10{

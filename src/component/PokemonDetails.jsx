@@ -124,9 +124,6 @@ const PokemonDetails = (selectedPokemon) => {
                                         </div>
                                     ))}
                             </>
-
-
-
                         )}
                     </div>
                 </div>

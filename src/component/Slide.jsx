@@ -4,8 +4,8 @@ import '../css/Slider.css';
 function Slide() {
 
     return (
-        <div class="logos">
-        <div class="logos-slide">
+        <div className="logos">
+        <div className="logos-slide">
           <img alt=''  src="https://img.icons8.com/?size=48&id=20909&format=png" />
           <img alt='' src="https://img.icons8.com/?size=48&id=21278&format=png" />
           <img alt='' src="https://img.icons8.com/?size=48&id=108784&format=png" />
@@ -15,7 +15,7 @@ function Slide() {
           <img alt='' src="https://img.icons8.com/?size=48&id=74402&format=png" />
           <img alt='' src="https://img.icons8.com/?size=80&id=asWSSTBrDlTW&format=png" />
         </div>      
-        <div class="logos-slide">
+        <div className="logos-slide">
           <img alt=''  src="https://img.icons8.com/?size=48&id=20909&format=png" />
           <img alt='' src="https://img.icons8.com/?size=48&id=21278&format=png" />
           <img alt='' src="https://img.icons8.com/?size=48&id=108784&format=png" />

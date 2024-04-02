@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import Nav from "../src/component/Nav";
 import Home from "./pages/Home";
 import ClaimList from "./pages/ClaimList";
-import About from './pages/About';
 import Loading from './pages/Loading';
 import './App.css';
 import Poke from './pages/Poke';
@@ -30,7 +29,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/claimlist" element={<ClaimList />} />
-          <Route path="/about" element={<About />} />
           <Route path="/pokemon/*" element={<PokemonRoutes />} />
         </Routes>
       )}

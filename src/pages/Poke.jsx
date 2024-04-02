@@ -22,6 +22,7 @@ function Poke() {
             console.log("fetch pokemon err", err);
         }
     };
+    
     useEffect(() => {
         try {
             getPokemon(pagePokemon);
@@ -105,7 +106,7 @@ function Poke() {
                     ) : (
                         pokeData.map((pokemon, index) => (
                             <div key={pokemon.data.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                                <div className="card bg-dark text-white position-relative" style={{ minHeight: "200px" }}>
+                                <div className="card-pokemon bg-dark text-white position-relative" style={{ minHeight: "200px" }}>
                                     <NavLink to={`/pokemon/${pokemon.data.id}`}>
                                         <img
                                             src={pokemon.data.sprites.front_default}

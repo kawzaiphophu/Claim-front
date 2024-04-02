@@ -1,10 +1,39 @@
 import '../css/nav.css'
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 function Nav() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const sections = document.querySelectorAll("section");
+  const navs = document.querySelectorAll(".navbar-nav li a");
+
+
+
+  const isMainPage = window.location.pathname === '/';
+
+  if (isMainPage) {
+    const intersectionHandler = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          const navLink = document.querySelector('.navbar-nav li a[data-id="' + id + '"]');
+          if (navLink) {
+            navs.forEach(nav => nav.classList.remove('active'));
+            navLink.classList.add('active');
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(intersectionHandler, {
+      rootMargin: '-120px 120px -80% 0px',
+    });
+    sections.forEach(sec => {
+      observer.observe(sec);
+    });
+  }
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,20 +51,22 @@ function Nav() {
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos, visible]);
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+
+  const scrollTo = (path) => {
+    const section = document.getElementById(path);
+    if (section) {
+      const offset = section.offsetTop - 70;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   };
 
   return (
-    <div className={`navbar sticky-top navbar-expand-sm fs-5 p-0  ${visible ? 'navbar--show' : 'navbar--hidden'}`}>
+    <div className={`navbar sticky-top navbar-expand-sm fs-5 p-0  ${visible ? 'navbar--show' : 'navbar--'}`}>
       <div className="container-fluid ps-1">
-        <NavLink className="navbar-brand "
+        <Link className="navbar-brand "
           to="/">
           <img src="https://cdn-icons-png.freepik.com/256/10137/10137151.png?ga=GA1.1.1207387130.1709617310&" alt="" />
-        </NavLink>
+        </Link>
         <button className="navbar-toggler"
           type="button" data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -43,35 +74,40 @@ function Nav() {
           aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse"
+        <nav className="collapse navbar-collapse"
           id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link ps-3" to="/">Home</NavLink>
+              <Link data-id="home" className="nav-link active" to="/" onClick={() => scrollTo('home')}>Home</Link>            </li>
+            <li >
+              <Link data-id="about" className="nav-link" to="/" onClick={() => scrollTo('about')}>About</Link>
             </li>
-            <li>
-              <NavLink className="nav-link ps-3" to="/" onClick={scrollToAbout}>About</NavLink>
-            </li>
-            <li className="nav-item dropdown ps-2">
-              <NavLink className="nav-link dropdown-toggle"
-                to="1" id="navbarDropdown"
+            <li className="nav-item dropdown">
+              <Link className="nav-link"
+                data-id="project"
+                to="/" id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
-                aria-expanded="false">
+                aria-expanded="false"
+                onClick={() => scrollTo('project')}>
                 ProJect
-              </NavLink>
+              </Link>
               <ul className="dropdown-menu w-25 p-3"
                 aria-labelledby="navbarDropdown">
-                <li><NavLink className="dropdown-item "
-                  to="/ClaimList"> Claim</NavLink></li>
-                <li><NavLink className="dropdown-item "
-                  to="/Pokemon"> Poke</NavLink></li>
+                <li ><Link className="dropdown-item "
+                  to="/ClaimList"> Claim</Link></li>
+                <li><Link className="dropdown-item "
+                  to="/Pokemon"> Poke</Link></li>
               </ul>
             </li>
+            <li >
+              <Link data-id="contacts" className="nav-link" to="/" onClick={() => scrollTo('contacts')}>contacts</Link>
+            </li>
           </ul>
-        </div>
+        </nav>
       </div>
     </div>
+
   );
 }
 

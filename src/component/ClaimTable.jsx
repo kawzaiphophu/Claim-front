@@ -51,7 +51,7 @@ const ClaimTable = ({ items, setItems,status,setStatus}) => {
           </td>
           <td className='w-edit'>
             <button type="button" className="btn btn-light btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">🔧</button>
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="editbtn" aria-hidden="true">
+            <div className="modal" id="exampleModal" tabIndex="-1" aria-labelledby="editbtn" aria-hidden="true">
               <div className="modal-dialog ">
                 <div className="modal-content">
                   <div className="modal-header">

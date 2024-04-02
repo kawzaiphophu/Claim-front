@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Slide from '../component/Slide';
+import { Link } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../css/home.css'
 import hill1 from '../img/hill1.png'
@@ -10,9 +13,13 @@ import hill5 from '../img/hill5.png'
 import leaf from '../img/leaf.png'
 import plant from '../img/plant.png'
 import tree from '../img/tree.png'
-import 'animate.css';
+import claims from '../img/claims.png'
+import pokemon from '../img/pokemon.png'
+import SendEmail from '../component/SendEmail';
 
 function Home() {
+  AOS.init();
+
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -27,8 +34,9 @@ function Home() {
 
   return (
     <>
+      {/* home */}
       <div className="grid-sm" >
-        <section className='parallax'>
+        <section id='home' className='parallax home'>
           <img src={hill1} alt="hill1" style={{ top: `${scrollY * 1}px` }} />
           <img src={hill2} alt="hill2" />
           <img src={hill3} alt="hill3" />
@@ -41,30 +49,56 @@ function Home() {
           <img src={plant} alt="plant" />
           <img src={leaf} alt="leaf" style={{ top: `${scrollY * -1.5}px` }} />
         </section>
-
-        {/* /* about me */}
-        <section id='about' className='py-3'></section>
-        <main className="page-main ">
-          <div className="content">
-            <div className='container-sm section-1'>
-              <h1 className='sub-header'>About Me</h1>
-              <div className='img my-5'>
-                <img className='img-1' src="https://th.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" alt="" />
-                <img className='rounded-circle img-2' src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1710944863~exp=1710945463~hmac=b26c699633c3c26d22e17f4304db7b712897496dca5afdfeca2af8493d7f1fd6" alt="" />
+        {/* about me */}
+        <section  id='about' className='about'
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500">
+          <main  className="page-main ">
+            <div className="content animate__animated animate__fadeInUp">
+              <div className='container-sm section'>
+                <h1 className='sub-header py-1'>About Me</h1>
+                <div className='img d-flex h-50'>
+                  <div className="w-25 d-flex flex-column-reverse align-items-end py-5 ">
+                    <h6>Html</h6>
+                    <h6>CSS</h6>
+                    <h6>JavaScript</h6>
+                    <h6>Bootstrap 5</h6>
+                    <h6>React</h6>
+                    <h5>Front-end skill</h5>
+                  </div>
+                  <div className="merged-image w-50">
+                    <img className='img-1' src="https://th.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" alt="" />
+                    <img className='img-2 rounded-circle ' src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1710944863~exp=1710945463~hmac=b26c699633c3c26d22e17f4304db7b712897496dca5afdfeca2af8493d7f1fd6" alt="" />
+                  </div>
+                  <div className="w-25 d-flex flex-column-reverse align-items-start py-5 ">
+                    <h6>JavaScript</h6>
+                    <h6>NodeJS</h6>
+                    <h6>Express</h6>
+                    <h6>MongoDB 5</h6>
+                    <h6>Mongoose</h6>
+                    <h5>Back-end skill</h5>
+                  </div>
+                </div>
+                <h2 className='d-flex p-2'>My Name Is Kaw </h2>
+                <p className='d-flex p-2 ps-5'>
+                  {`My Name is Somboon Zaiphophu my Nickname is Kaw I am 25 years old. Nationality Thai. ethnicity Thai. My Github :`}
+                </p>
+                <Slide />
               </div>
-              <h2 className='d-flex p-2'>My Name Is Kaw </h2>
-              <p className='d-flex p-2 ps-5'>
-                {`My Name is Somboon Zaiphophu my Nickname is Kaw I am 25 years old. Nationality Thai. ethnicity Thai. My Github :`}
-              </p>
-              <Slide/>
             </div>
-            <hr />
-            <h1 className='my-5'>MY ProJect</h1>
-           
-          </div>
-        </main >
-        <footer className="page-footer">
-          <div className="content">
+          </main >
+        </section>
+        <hr className='mt-5' />
+        {/* Project */}
+        <section 
+        id='project' 
+        className='project'
+        data-aos="fade-up">
+          <div 
+          className='container content '
+          data-aos="fade-up"
+          data-aos-duration="1500">
             <div id="carouselExampleIndicators" className="carousel slide " data-bs-ride="carousel">
               <div className="carousel-indicators ">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -91,8 +125,67 @@ function Home() {
                 <span className="visually-hidden">Next</span>
               </button>
             </div>
+            <h1 className='pb-5 '>MY ProJect</h1>
+            <div className='container'>
+              <div className="row row-cols-1 row-cols-md-2 g-4">
+                <Link to={"/ClaimList"}
+                className='nav-link'
+                data-aos="fade-left">
+                  <div className="col mx-3">
+                    <div className="card">
+                      <img src={claims} className="card-img-top p-2 "
+                        alt="claims" />
+                      <div className="card-body">
+                        <h5 className="card-title">Claims</h5>
+                        <p className="card-text">
+                          This project is used to fill in customer information and store it in a database. You can add, delete, and edit product claim information from every branch.
+                        </p>
+                        <hr />
+                        <h6>HTML CSS JavaScript react bootstrap nodeJs Express MongoDB</h6>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+                <Link to={"/pokemon"} className='nav-link'
+                data-aos="fade-right">
+                  <div className="col mx-3">
+                    <div className="card">
+                      <img src={pokemon} className="card-img-top p-2 h-auto"
+                        alt="pokemon" />
+                      <div className="card-body">
+                        <h5 className="card-title">Pokemon</h5>
+                        <p className="card-text">
+                          Pokemon Project Created to fetch all pokemon and can be searched by name and by type to show API management from pokeapi and can view details of each pokemon.
+                        </p>
+                        <hr />
+                        <h6>HTML CSS JavaScript react bootstrap pokeapi</h6>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
           </div>
-        </footer>
+          <hr className='m-5' />
+        </section>
+        {/* footer */}
+        <section id='contacts' className="page-footer m-5 p-5">
+          <div className="container-fluid d-flex justify-content-between">
+            <div className='w-50'>
+              <h1 className=' mb-5'>contacts</h1>
+              <p>Tel : 0972577932</p>
+              <p>line : 0972577932</p>
+              <p>Email : kawzaiphophu@gmail.com</p>
+              <p>Address : Charan 53, Bang Yi Khan, Bang Phlat, Bangkok </p>
+            </div>
+            <div className='w-50 d-flex justify-content-center'>
+              <div className='w-100'>
+                <h4 className='p-2'>Send Email TO Me</h4>
+                <SendEmail />
+              </div>
+            </div>
+          </div>
+        </section>
       </div >
     </>
   )
