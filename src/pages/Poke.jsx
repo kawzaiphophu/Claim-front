@@ -62,8 +62,8 @@ function Poke() {
     }
     return (
         <>
-            <div className='container w-75 h-100 py-5 my-5 pokemondiv'>
-                <div className='btn d-flex justify-content-center' style={{ textAlign: 'center' }} onClick={() => setPagePokemon(1)}>
+            <div className='container w-100 h-100 py-5 my-5 pokemondiv'>
+                <div className='btn d-flex justify-content-center' style={{ textAlign: 'center' }} onClick={() => {setPagePokemon(1);searchByType();setFilterType(0)}}>
                     <h1>Pokémon</h1>
                 </div>
                 <div className="my-3 d-flex justify-content-between">
@@ -74,9 +74,9 @@ function Poke() {
                             aria-label="Recipient's username"
                             aria-describedby="button-addon2"
                             onChange={(e) => setSearchTerm(e.target.value)} />
-                        <button className="btn btn-dark me-2"
+                        <button className="btn btn-dark me-2 w-25"
                             type="button" id="button-addon2"
-                            onClick={() => searchByName(searchTerm)}>Search</button>
+                            onClick={() => searchByName(searchTerm)}>go</button>
                     </div>
                     <select
                         className="form-select"
@@ -87,7 +87,7 @@ function Poke() {
                         })}
                     </select>
                 </div>
-                <div className={`d-flex justify-content-between ${Number(filterType) > 0 ? 'd-none' : ''}`}>
+                <div className={`d-flex justify-content-between ${Number(filterType) > 0 ? 'd-none' : 'd-flex'}`}>
                     <button className={`btn bg-dark text-light m-3 ${pagePokemon <= 1 ? 'disabled' : ''}`} type='button' onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon - 1); }}>prev</button>
                     <button className={`btn bg-dark text-light m-3 ${pagePokemon >= 43 ? 'disabled' : ''}`} type='button' onClick={() => { setIsLoading(true); setPagePokemon(pagePokemon + 1); }}>next</button>
                 </div>

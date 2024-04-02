@@ -27,24 +27,77 @@
     width: 20%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 501px) and (max-width:1000px) {
+    th {
+        display: none;
+    }
+    tbody{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap:1rem ;
+    }
+
+    td {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-column-gap:1rem 1rem;
+        text-align: start;
+
+    }
+    td::before {
+        content: attr(data-cell) ": ";
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+
+    td:nth-child(2)::before {
+        content: attr(data-cell) " NAME : ";
+    }
+    td:nth-child(3)::before {
+        content: attr(data-cell) " TEL : ";
+    }
+    td:nth-child(4)::before {
+        content: attr(data-cell) "";
+    }
+    td:nth-child(5)::before {
+        content: attr(data-cell) " DATE : ";
+    }
+    td:nth-child(6)::before {
+        content: attr(data-cell) " FROM : ";
+    }
+    td:nth-child(7)::before {
+        content: attr(data-cell) "";
+    }
+    td:nth-child(7) {
+        grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr;
+
+    }    
+    td:nth-child(4) {
+        grid-template-columns: 1fr;
+
+    }
+
+    td:nth-child(7) {
+        margin-bottom: 1rem;
+    }
+
+}
+@media only screen and (max-width: 500px) {
     th {
         display: none;
     }
 
     td {
         display: grid;
-        grid-template-columns: 15ch auto;
-        grid-column-gap: 0.5rem 1rem;
+        grid-template-columns: 1fr 3fr;
+        grid-column-gap:1rem 1rem;
         text-align: start;
-        border: none;
-    }
 
+    }
     td::before {
+        content: attr(data-cell) ": ";
         font-weight: 700;
         text-transform: capitalize;
-        border: none;
-        padding: 0 20px;
     }
 
     td:nth-child(2)::before {

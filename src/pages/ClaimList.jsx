@@ -62,13 +62,13 @@ function ClaimList() {
         <table className="table table-dark table-striped table-bordered text-center">
           <thead className="thead-dark">
             <tr>
-              <th scope="col">No.</th>
-              <th scope="col">ชื่อลูกค้า</th>
-              <th scope="col">เบอร์โทร</th>
-              <th scope="col">Product</th>
-              <th scope="col">Date</th>
-              <th scope="col">Status</th>
-              <th scope="col">Edit</th>
+              <th className='w-no' scope="col">No.</th>
+              <th className='w-name' scope="col">ชื่อลูกค้า</th>
+              <th className='w-tel' scope="col">เบอร์โทร</th>
+              <th className='w-product' scope="col">Product</th>
+              <th className='w-date' scope="col">Date</th>
+              <th className='w-status' scope="col">Status</th>
+              <th className='w-edit' scope="col">Edit</th>
             </tr>
           </thead>
           <ClaimTable items={items} fetchData={fetchData} setItems={setItems} status={status} setStatus={setStatus} />

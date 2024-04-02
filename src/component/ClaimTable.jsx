@@ -11,10 +11,10 @@ const ClaimTable = ({ items, setItems,status,setStatus}) => {
     <tbody>
       { items.map((row, index) => (
         <tr key={index}>
-          <th className='w-no' scope="row">{index + 1}</th>
-          <td className='w-name'>{row.name}</td>
-          <td className='w-tel'>{row.tel}</td>
-          <td className='w-product'>
+          <th className='w-auto' scope="row">{index + 1}</th>
+          <td className='w-auto'>{row.name}</td>
+          <td className='w-auto'>{row.tel}</td>
+          <td className='w-auto'>
             <span
               className="btn w-100 btn btn-light border-bottom border-dark align-self-center"
               data-bs-toggle="collapse"
@@ -42,14 +42,14 @@ const ClaimTable = ({ items, setItems,status,setStatus}) => {
               </div>
             </div>
           </td>
-          <td className='w-date'>{moment(row.update_at).format("DD/MM/YY")}</td>
+          <td className='w-auto'>{moment(row.update_at).format("DD/MM/YY")}</td>
 
-          <td className='w-status'>
+          <td className='w-auto'>
             <div className="d-flex bd-highlight">
               <div className="flex-grow-1 bd-highlight">{row.status}</div>
             </div>
           </td>
-          <td className='w-edit'>
+          <td className='w-auto'>
             <button type="button" className="btn btn-light btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">🔧</button>
             <div className="modal" id="exampleModal" tabIndex="-1" aria-labelledby="editbtn" aria-hidden="true">
               <div className="modal-dialog ">
