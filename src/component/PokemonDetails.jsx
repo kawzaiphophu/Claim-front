@@ -44,13 +44,13 @@ const PokemonDetails = (selectedPokemon) => {
 
     return (
         <div>
-            <div className='container pt-2 w-75 '>
+            <div className='container pt-2 w-100 '>
                 <div className='text-center pokemondiv container-fluid '>
                     <div className='d-flex justify-content-between pt-2 '>
                         <div className={`btn btn-dark fs-4 ${currentId <= 1 ? 'disabled' : ''}`} onClick={handlePrevClick}>Prev</div>
                         <div className={`btn btn-dark fs-4 ${currentId >= 1025 ? 'disabled' : ''}`} onClick={handleNextClick}>Next</div>
                     </div>
-                    <h1 className=''>{pokemonDetails?.name} #{pokemonDetails?.id}</h1>
+                    <h2 className='container pokeDetailDiv p-2 my-3'>{pokemonDetails?.name} #{pokemonDetails?.id}</h2>
                     <div className='img py-1'>
                         <img className='img-1' src="https://th.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" alt="" />
                         <img className='mx-auto img-2 d-flex align-items-center pb-5 ' src={pokemonDetails?.sprites?.other?.home?.front_default} alt={pokemonDetails?.name} />
@@ -64,24 +64,24 @@ const PokemonDetails = (selectedPokemon) => {
                             </>
                         )}
                     </div>
-                    <div className='pokeDetailDiv d-flex justify-content-between px-4 my-3 mx-auto w-100'>
-                        <div className='d-flex flex-column fs-4 w-50 py-3 '>
-                            <div className='fs-3'>Info</div>
-                            <div className='fs-5 text-start'>weight : {pokemonDetails?.weight} </div>
-                            <div className='fs-5 text-start'>height : {pokemonDetails?.height}</div>
+                    <div className='pokeDetailDiv d-flex justify-content-between px-5 py-3 mt-3 w-100'>
+                        <div className='d-flex flex-column'>
+                        <h3 className='btn-light pokeDetailDiv p-2'>Info</h3>
+                            <div className='fs-6 text-start'>weight : {pokemonDetails?.weight} </div>
+                            <div className='fs-6 text-start'>height : {pokemonDetails?.height}</div>
                         </div>
-                        <div className='d-flex flex-column fs-5 w-50 py-3'>
-                            <div className='fs-3'>Ability</div>
+                        <div className='d-flex flex-column w-25'>
+                        <h3 className='btn-light pokeDetailDiv p-2'>Ability</h3>
                             {pokemonDetails?.abilities && (
                                 <>
                                     {pokemonDetails.abilities.map((ability, index) => (
                                         <div key={index}>
                                             {ability.is_hidden ? (
                                                 <>
-                                                    <div className='fs-5 text-start'> {ability.ability.name}*</div>
+                                                    <div className='fs-6 text-center'> {ability.ability.name}*</div>
                                                 </>
                                             ) : (
-                                                <div className='fs-5 text-start'>{ability.ability.name}</div>
+                                                <div className='fs-6 text-center'>{ability.ability.name}</div>
                                             )}
                                         </div>
                                     ))}
@@ -89,14 +89,17 @@ const PokemonDetails = (selectedPokemon) => {
                             )}
 
                         </div>
-                        <div className='d-flex flex-column fs-5 w-75 py-3 p-1' >
-                            <div className='fs-3'> Stat </div>
+                    </div>
+                    <div className='pokeDetailDiv d-flex justify-content-center p-3 my-3 w-100'>
+                   
+                    <div className='d-flex-column w-75' >
+                        <h3 className='btn-light pokeDetailDiv p-3 pb-3'>Status Pokemon</h3>
                             {pokemonDetails?.stats && (
                                 <>
                                     {pokemonDetails.stats.map((stat, index) => (
-                                        <div key={index} className='row fs-5'>
+                                        <div key={index} className='row fs-6 w-100'>
                                             <div className='col-9 text-start'>{stat.stat.name}</div>
-                                            <div className='col text-start'>{stat.base_stat}</div>
+                                            <div className='col text-end'>{stat.base_stat}</div>
                                         </div>
                                     ))}
                                 </>
@@ -106,9 +109,9 @@ const PokemonDetails = (selectedPokemon) => {
                     <div className='container pokeDetailDiv p-5'>
                         {pokemonDetails?.moves && (
                             <>
-                                <div className='d-flex justify-content-between fs-3 px-5'>
-                                    <span>Move</span>
-                                    <span>Learn At Level</span>
+                                <div className='d-flex justify-content-between fs-3 px-auto my-3'>
+                                    <span className='pokeDetailDiv p-2'>Move</span>
+                                    <span className='pokeDetailDiv p-2'>Learn At Level</span>
                                 </div>
                                 {pokemonDetails.moves
                                     .map(move => ({
