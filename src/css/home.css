@@ -305,4 +305,8 @@ header {
         letter-spacing: 2px;
         font-size: 2rem;
     }
+    .page-footer{
+        display: flex;
+        flex-direction: column;
+    }
 }

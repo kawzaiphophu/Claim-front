@@ -169,20 +169,19 @@ function Home() {
           <hr className='m-5' />
         </section>
         {/* footer */}
-        <section id='contacts' className="page-footer m-5 p-5">
-          <div className="container-fluid d-flex justify-content-between">
-            <div className='w-50'>
-              <h1 className=' mb-5'>contacts</h1>
+        <section id='contacts' className="page-footer m-5 p-5 d-flex justify-content-between">
+            <div className='contacts w-100'>
+              <h1 className='mb-2'>contacts</h1>
               <p>Tel : 0972577932</p>
               <p>line : 0972577932</p>
               <p>Email : kawzaiphophu@gmail.com</p>
               <p>Address : Charan 53, Bang Yi Khan, Bang Phlat, Bangkok </p>
             </div>
-            <div className='w-50 d-flex justify-content-center'>
+            <div className='d-flex justify-content-center contacts w-100'>
               <div className='w-100'>
-                <h4 className='p-2'>Send Email TO Me</h4>
+                <h4 className='mb-2 mt-5'>Send Email TO Me</h4>
                 <SendEmail />
-              </div>
+
             </div>
           </div>
         </section>
