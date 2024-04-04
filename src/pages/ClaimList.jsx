@@ -5,9 +5,6 @@ import ClaimTable from '../component/ClaimTable';
 import HandleSearch from '../component/HandleSearch'
 import '../css/claimlist.css'
 
-
-
-
 function ClaimList() {
   const [items, setItems] = useState([]);
   const [originalItems, setOriginalItems] = useState([]);
@@ -31,8 +28,8 @@ function ClaimList() {
     <>
 
       <div className='d-flex justify-content-between pt-5'>
-        <div className='pt-5'><h1>ClaimList</h1></div>
-        <div className="input-group w-50 pt-5 pb-4">
+        <div className='pt-5 ps-3'><h1>ClaimList</h1></div>
+        <div className="input-group w-50 pt-5 pb-4 pe-3">
           <input
             type="text"
             className="form-control"

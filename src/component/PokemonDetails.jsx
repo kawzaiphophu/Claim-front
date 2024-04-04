@@ -66,12 +66,12 @@ const PokemonDetails = (selectedPokemon) => {
                     </div>
                     <div className='pokeDetailDiv d-flex justify-content-between px-5 py-3 mt-3 w-100'>
                         <div className='d-flex flex-column'>
-                        <h3 className='btn-light pokeDetailDiv p-2'>Info</h3>
+                        <h3 className='btn-light pokeDetailDiv px-2 w-100 my-2'>Info</h3>
                             <div className='fs-6 text-start'>weight : {pokemonDetails?.weight} </div>
                             <div className='fs-6 text-start'>height : {pokemonDetails?.height}</div>
                         </div>
-                        <div className='d-flex flex-column w-25'>
-                        <h3 className='btn-light pokeDetailDiv p-2'>Ability</h3>
+                        <div className='d-flex flex-column w-50'>
+                        <h3 className='btn-light pokeDetailDiv px-2 w-100 my-2'>Ability</h3>
                             {pokemonDetails?.abilities && (
                                 <>
                                     {pokemonDetails.abilities.map((ability, index) => (
@@ -93,7 +93,7 @@ const PokemonDetails = (selectedPokemon) => {
                     <div className='pokeDetailDiv d-flex justify-content-center p-3 my-3 w-100'>
                    
                     <div className='d-flex-column w-75' >
-                        <h3 className='btn-light pokeDetailDiv p-3 pb-3'>Status Pokemon</h3>
+                        <h3 className='btn-light pokeDetailDiv px-3 my-3'>Status Pokemon</h3>
                             {pokemonDetails?.stats && (
                                 <>
                                     {pokemonDetails.stats.map((stat, index) => (
@@ -106,12 +106,12 @@ const PokemonDetails = (selectedPokemon) => {
                             )}
                         </div>
                     </div>
-                    <div className='container pokeDetailDiv p-5'>
+                    <div className='container pokeDetailDiv p-2'>
                         {pokemonDetails?.moves && (
                             <>
                                 <div className='d-flex justify-content-between fs-3 px-auto my-3'>
-                                    <span className='pokeDetailDiv p-2'>Move</span>
-                                    <span className='pokeDetailDiv p-2'>Learn At Level</span>
+                                    <span className='pokeDetailDiv px-3'>Move</span>
+                                    <span className='pokeDetailDiv px-3 '>Learn At Level</span>
                                 </div>
                                 {pokemonDetails.moves
                                     .map(move => ({
@@ -121,7 +121,7 @@ const PokemonDetails = (selectedPokemon) => {
                                     .filter(move => move.levelLearned)
                                     .sort((a, b) => a.levelLearned.level_learned_at - b.levelLearned.level_learned_at)
                                     .map((move, index) => (
-                                        <div key={index} className='row fs-5 p-1'>
+                                        <div key={index} className='row fs-5 p-1 px-3'>
                                             <div className='col-9 text-start'>{move.name}</div>
                                             <div className='col text-center'>{move.levelLearned.level_learned_at}</div>
                                         </div>

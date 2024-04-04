@@ -93,7 +93,7 @@ function Poke() {
                     {isLoading ? (
                         <>
                         {[...Array(24)].map((_, index) => (
-                            <div key={index} className='col-12 col-sm-6 col-md-4 col-lg-3 mb-4 '>
+                            <div key={index} className='col-6 col-sm-6 col-md-4 col-lg-3 mb-4 '>
                                 <div className="card loading">
                                     <div className="card-body" style={{ height: "200px" }}>
                                     </div>
@@ -103,7 +103,7 @@ function Poke() {
                     </>
                     ) : (
                         pokeData.map((pokemon, index) => (
-                            <div key={pokemon.data.id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div key={pokemon.data.id} className="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
                                 <div className="card-pokemon bg-dark text-white position-relative" style={{ minHeight: "200px" }}>
                                     <NavLink to={`/pokemon/${pokemon.data.id}`}>
                                         <img
