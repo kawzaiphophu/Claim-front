@@ -17,7 +17,6 @@ function Poke() {
             const pokemons = await fetchPokemon(pagePokemon);
             setPokedata(pokemons.pokeData);
             setIsLoading(false);
-            console.log("normal");
         } catch (err) {
             console.log("fetch pokemon err", err);
         }
@@ -38,11 +37,10 @@ function Poke() {
                 const pokemons = await fetchPokemon(1, "type", filterType);
                 setPokedata(pokemons.pokeData)
                 setIsLoading(false);
-                console.log("type");
             } else {
                 setIsLoading(true);
                 getPokemon(pagePokemon)
-                console.log("return normal");
+
             }
         } catch (error) {
             console.log("fetch pokeType err", error);
@@ -56,7 +54,7 @@ function Poke() {
                 setPokedata(data)
                 setIsLoading(false);
             } catch (error) {
-                console.log("1");
+                console.log("fetch pokeType err", error);
             }
         }
     }
