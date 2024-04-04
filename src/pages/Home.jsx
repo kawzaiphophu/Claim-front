@@ -26,6 +26,7 @@ function Home() {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
+  
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -65,7 +66,7 @@ function Home() {
                     <h6>JavaScript</h6>
                     <h6>Bootstrap 5</h6>
                     <h6>React</h6>
-                    <h5>Front-end skill</h5>
+                    <h5>Front-end</h5>
                   </div>
                   <div className="merged-image w-50">
                     <img className='img-1' src="https://th.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" alt="" />
@@ -75,9 +76,9 @@ function Home() {
                     <h6>JavaScript</h6>
                     <h6>NodeJS</h6>
                     <h6>Express</h6>
-                    <h6>MongoDB 5</h6>
+                    <h6>MongoDB</h6>
                     <h6>Mongoose</h6>
-                    <h5>Back-end skill</h5>
+                    <h5>Back-end</h5>
                   </div>
                 </div>
                 <h2 className='d-flex p-2'>My Name Is Kaw </h2>
@@ -169,17 +170,17 @@ function Home() {
           <hr className='m-5' />
         </section>
         {/* footer */}
-        <section id='contacts' className="page-footer m-5 p-5 d-flex justify-content-between">
+        <section id='contacts' className="page-footer w-100 mx-1 px-5 d-flex justify-content-between">
             <div className='contacts w-100'>
-              <h1 className='mb-2'>contacts</h1>
+              <h1 className='mb-2 w-100'>contacts</h1>
               <p>Tel : 0972577932</p>
               <p>line : 0972577932</p>
               <p>Email : kawzaiphophu@gmail.com</p>
               <p>Address : Charan 53, Bang Yi Khan, Bang Phlat, Bangkok </p>
             </div>
-            <div className='d-flex justify-content-center contacts w-100'>
+            <div className='d-flex justify-content-center contacts w-100 mb-5'>
               <div className='w-100'>
-                <h4 className='mb-2 mt-5'>Send Email TO Me</h4>
+                <h1 className='mb-2 mt-5'>Send Email TO Me</h1>
                 <SendEmail />
 
             </div>

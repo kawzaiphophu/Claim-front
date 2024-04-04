@@ -4,7 +4,7 @@ import FormClaim from '../component/FormClaim';
 import ClaimTable from '../component/ClaimTable';
 import HandleSearch from '../component/HandleSearch'
 import '../css/claimlist.css'
-
+import exemdata from '../data/claim.list.json'
 
 
 
@@ -19,7 +19,7 @@ function ClaimList() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3001/claimlist");
+      const response = await axios.get("https://project-back.vercel.app/claimlist");
       setItems(response.data);
       setOriginalItems(response.data);
     } catch (error) {

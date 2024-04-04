@@ -243,29 +243,6 @@ header {
     pointer-events: none;
 }
 
-
-
-
-/* @media only screen and (min-width: 600px) and (max-width: 1023px) {
-    .grid-item {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .content-item {
-        height: 100%;
-    }
-
-    .typing h2 {
-        letter-spacing: 2px;
-        font-size: 2.5rem;
-    }
-    .parallax img {
-        width: auto;
-    }
-
-} */
-
-
 @media only screen and (min-width: 1920px) {
     .grid-item {
         grid-template-columns: 1fr 1fr;
@@ -300,10 +277,13 @@ header {
     .parallax img {
         width: auto;
     }
+    .row-cols-1{
+        overflow: hidden;
+    }
 
     .typing h2 {
-        letter-spacing: 2px;
-        font-size: 2rem;
+        letter-spacing: 1px;
+        font-size: 1.5rem;
     }
     .page-footer{
         display: flex;
