@@ -26,36 +26,37 @@ function Home() {
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
-  
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
+  const isMobile = window.innerWidth <= 768;
   return (
     <>
       {/* home */}
       <div className="grid-sm" >
         <section id='home' className='parallax home'>
-          <img src={hill1} alt="hill1" style={{ top: `${scrollY * 1}px` }} />
+          <img src={hill1} alt="hill1" style={isMobile? null:{ top: `${scrollY * 1}px`, transition: 'top 0.1s,' }} />
           <img src={hill2} alt="hill2" />
           <img src={hill3} alt="hill3" />
-          <img src={hill4} alt="hill4" style={{ left: `${scrollY * -1.5}px` }} />
-          <img src={hill5} alt="hill5" style={{ left: `${scrollY * 1.5}px` }} />
+          <img src={hill4} alt="hill4" style={isMobile?null:{ left: `${scrollY * -1.5}px`, transition: 'left 0.1s,' }} />
+          <img src={hill5} alt="hill5" style={isMobile?null:{ left: `${scrollY * 1.5}px`, transition: 'left 0.1s,' }} />
           <img src={tree} alt="tree" />
-          <div className="typing" style={{ marginTop: `${scrollY * 2.5}px` }}>
+          <div className="typing" style={isMobile?null:{ marginTop: `${scrollY * 2.5}px`, transition: 'margin-top 0.1s,' }}>
             <h2 className="text-uppercase">Welcome&nbsp;To&nbsp;Website</h2>
           </div>
           <img src={plant} alt="plant" />
-          <img src={leaf} alt="leaf" style={{ top: `${scrollY * -1.5}px` }} />
+          <img src={leaf} alt="leaf" style={isMobile?null:{ top: `${scrollY * -1.5}px`, transition: 'top 0.1s,' }} />
+
         </section>
         {/* about me */}
-        <section  id='about' className='about'
-        data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="1500">
-          <main  className="page-main ">
+        <section id='about' className='about'
+          data-aos="fade-down"
+          data-aos-easing="linear"
+          data-aos-duration="1500">
+          <main className="page-main ">
             <div className="content animate__animated animate__fadeInUp">
               <div className='container-sm section'>
                 <h1 className='sub-header py-1'>About Me</h1>
@@ -92,14 +93,14 @@ function Home() {
         </section>
         <hr className='mt-5' />
         {/* Project */}
-        <section 
-        id='project' 
-        className='project'
-        data-aos="fade-up">
-          <div 
-          className='container content '
-          data-aos="fade-up"
-          data-aos-duration="1500">
+        <section
+          id='project'
+          className='project'
+          data-aos="fade-up">
+          <div
+            className='container content '
+            data-aos="fade-up"
+            data-aos-duration="1500">
             <div id="carouselExampleIndicators" className="carousel slide " data-bs-ride="carousel">
               <div className="carousel-indicators ">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -130,8 +131,8 @@ function Home() {
             <div className='container'>
               <div className="row row-cols-1 row-cols-md-2 g-4">
                 <Link to={"/ClaimList"}
-                className='nav-link'
-                data-aos="fade-left">
+                  className='nav-link'
+                  data-aos="fade-left">
                   <div className="col mx-3">
                     <div className="card">
                       <img src={claims} className="card-img-top p-2 "
@@ -148,7 +149,7 @@ function Home() {
                   </div>
                 </Link>
                 <Link to={"/pokemon"} className='nav-link'
-                data-aos="fade-right">
+                  data-aos="fade-right">
                   <div className="col mx-3">
                     <div className="card">
                       <img src={pokemon} className="card-img-top p-2 h-auto"
@@ -171,17 +172,17 @@ function Home() {
         </section>
         {/* footer */}
         <section id='contacts' className="page-footer w-100 mx-1 px-5 d-flex justify-content-between">
-            <div className='contacts w-100'>
-              <h1 className='mb-2 w-100'>contacts</h1>
-              <p>Tel : 0972577932</p>
-              <p>line : 0972577932</p>
-              <p>Email : kawzaiphophu@gmail.com</p>
-              <p>Address : Charan 53, Bang Yi Khan, Bang Phlat, Bangkok </p>
-            </div>
-            <div className='d-flex justify-content-center contacts w-100 mb-5'>
-              <div className='w-100'>
-                <h1 className='mb-2 mt-5'>Send Email TO Me</h1>
-                <SendEmail />
+          <div className='contacts w-100'>
+            <h1 className='mb-2 w-100'>contacts</h1>
+            <p>Tel : 0972577932</p>
+            <p>line : 0972577932</p>
+            <p>Email : kawzaiphophu@gmail.com</p>
+            <p>Address : Charan 53, Bang Yi Khan, Bang Phlat, Bangkok </p>
+          </div>
+          <div className='d-flex justify-content-center contacts w-100 mb-5'>
+            <div className='w-100'>
+              <h1 className='mb-2 mt-5'>Send Email TO Me</h1>
+              <SendEmail />
 
             </div>
           </div>

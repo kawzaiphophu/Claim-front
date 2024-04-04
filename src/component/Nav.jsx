@@ -1,9 +1,7 @@
 import '../css/nav.css'
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 function Nav() {
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
   const sections = document.querySelectorAll("section");
   const navs = document.querySelectorAll(".navbar-nav li a");
 
@@ -32,26 +30,6 @@ function Nav() {
       observer.observe(sec);
     });
   }
-
-
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      setPrevScrollPos(currentScrollPos);
-      if (prevScrollPos >= 30) {
-        setVisible(false)
-
-      } else {
-        setVisible(true)
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollPos, visible]);
-
   const scrollTo = (path) => {
     const section = document.getElementById(path);
     if (section) {
@@ -61,9 +39,9 @@ function Nav() {
   };
 
   return (
-    <div className={`navbar sticky-top navbar-expand-sm fs-5 p-0  ${visible ? 'navbar--show' : 'navbar--'}`}>
-      <div className="container-fluid ps-1">
-        <Link className="navbar-brand "
+    <div className={`navbar fixed-top navbar-expand-lg fs-5 m-0 p-0`}>
+      <div className="container-fluid ps-3">
+        <Link className="navbar-brand py-2"
           to="/">
           <img src="https://cdn-icons-png.freepik.com/256/10137/10137151.png?ga=GA1.1.1207387130.1709617310&" alt="" />
         </Link>

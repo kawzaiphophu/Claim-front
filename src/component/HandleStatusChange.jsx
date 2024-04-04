@@ -6,7 +6,7 @@ const HandleStatusChange = (event,setStatus) => {
 };
 
 const EditItem = (_id, status,setItems) => {
-  axios.patch(`http://localhost:3001/claimlist/${_id}/edit`, { status })
+  axios.patch(`https://project-back.vercel.app/claimlist/${_id}/edit`, { status })
     .then((response) => {
       // Update the status of the item locally
       setItems(prevItems => prevItems.map(item => {

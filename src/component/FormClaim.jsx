@@ -43,7 +43,7 @@ function FormClaim() {
             try {
                 if (formData.tel.length === 10) {
 
-                    const url = "http://localhost:3001/formclaim/add";
+                    const url = "https://project-back.vercel.app/formclaim/add";
                     axios.post(url, formData)
                     // Reset form data after successful submission
                     setFormData({

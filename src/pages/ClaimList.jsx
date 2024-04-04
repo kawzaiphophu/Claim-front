@@ -4,7 +4,7 @@ import FormClaim from '../component/FormClaim';
 import ClaimTable from '../component/ClaimTable';
 import HandleSearch from '../component/HandleSearch'
 import '../css/claimlist.css'
-import exemdata from '../data/claim.list.json'
+
 
 
 
@@ -29,8 +29,10 @@ function ClaimList() {
 
   return (
     <>
-      <div className='d-flex justify-content-end'>
-        <div className="input-group m-3 w-50">
+
+      <div className='d-flex justify-content-between pt-5'>
+        <div className='pt-5'><h1>ClaimList</h1></div>
+        <div className="input-group w-50 pt-5 pb-4">
           <input
             type="text"
             className="form-control"
@@ -39,8 +41,9 @@ function ClaimList() {
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
           />
+           <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#createclaim" data-bs-whatever="@mdo">New Claim</button>
         </div>
-        <button type="button" className="btn btn-success m-3 " data-bs-toggle="modal" data-bs-target="#createclaim" data-bs-whatever="@mdo">New Claim</button>
+       
         <div className="modal fade" id="createclaim" tabIndex="-1" aria-labelledby="editbtn" aria-hidden="true">
           <div className="modal-dialog ">
             <div className="modal-content">
