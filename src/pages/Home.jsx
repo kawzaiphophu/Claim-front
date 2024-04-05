@@ -38,17 +38,17 @@ function Home() {
       {/* home */}
       <div className="grid-sm" >
         <section id='home' className='parallax home'>
-          <img src={hill1} alt="hill1" style={isMobile? null:{ top: `${scrollY * 1}px`, transition: 'top 0.1s,' }} />
+          <img src={hill1} alt="hill1" style={isMobile ? null : { top: `${scrollY * 1}px`, transition: 'top 0.1s,' }} />
           <img src={hill2} alt="hill2" />
           <img src={hill3} alt="hill3" />
-          <img src={hill4} alt="hill4" style={isMobile?null:{ left: `${scrollY * -1.5}px`, transition: 'left 0.1s,' }} />
-          <img src={hill5} alt="hill5" style={isMobile?null:{ left: `${scrollY * 1.5}px`, transition: 'left 0.1s,' }} />
+          <img src={hill4} alt="hill4" style={isMobile ? null : { left: `${scrollY * -1.5}px`, transition: 'left 0.1s,' }} />
+          <img src={hill5} alt="hill5" style={isMobile ? null : { left: `${scrollY * 1.5}px`, transition: 'left 0.1s,' }} />
           <img src={tree} alt="tree" />
-          <div className="typing" style={isMobile?null:{ marginTop: `${scrollY * 2.5}px`, transition: 'margin-top 0.1s,' }}>
+          <div className="typing" style={isMobile ? null : { marginTop: `${scrollY * 2.5}px`, transition: 'margin-top 0.1s,' }}>
             <h2 className="text-uppercase">Welcome&nbsp;To&nbsp;Website</h2>
           </div>
           <img src={plant} alt="plant" />
-          <img src={leaf} alt="leaf" style={isMobile?null:{ top: `${scrollY * -1.5}px`, transition: 'top 0.1s,' }} />
+          <img src={leaf} alt="leaf" style={isMobile ? null : { top: `${scrollY * -1.5}px`, transition: 'top 0.1s,' }} />
 
         </section>
         {/* about me */}
@@ -82,9 +82,11 @@ function Home() {
                     <h5>Back-end</h5>
                   </div>
                 </div>
-                <h2 className='d-flex p-2'>My Name Is Kaw </h2>
+                <Link to="https://github.com/kawzaiphophu"><h4 className='btn btn-light'>My github : https://github.com/kawzaiphophu</h4>
+                </Link>
+                <h2 className='d-flex '>My Name Is Kaw </h2>
                 <p className='d-flex p-2 ps-5'>
-                  {`My Name is Somboon Zaiphophu my Nickname is Kaw I am 25 years old. Nationality Thai. ethnicity Thai. My Github :`}
+                  {`My Name is Somboon Zaiphophu my Nickname is Kaw I am 25 years old. Nationality Thai. ethnicity Thai.`}
                 </p>
                 <Slide />
               </div>

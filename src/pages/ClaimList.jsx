@@ -4,11 +4,13 @@ import FormClaim from '../component/FormClaim';
 import ClaimTable from '../component/ClaimTable';
 import HandleSearch from '../component/HandleSearch'
 import '../css/claimlist.css'
+import Loading from './Loading';
 
 function ClaimList() {
   const [items, setItems] = useState([]);
   const [originalItems, setOriginalItems] = useState([]);
   const [status, setStatus] = useState()
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -16,9 +18,11 @@ function ClaimList() {
 
   const fetchData = async () => {
     try {
+      setIsLoading(true)
       const response = await axios.get("https://project-back.vercel.app/claimlist");
       setItems(response.data);
       setOriginalItems(response.data);
+      setIsLoading(false)
     } catch (error) {
       console.error('Error fetching data:', error);
     }
@@ -71,7 +75,11 @@ function ClaimList() {
               <th className='w-edit' scope="col">Edit</th>
             </tr>
           </thead>
-          <ClaimTable items={items} fetchData={fetchData} setItems={setItems} status={status} setStatus={setStatus} />
+          {isLoading? 
+          <Loading/>
+          :
+          <ClaimTable items={items} fetchData={fetchData} setItems={setItems} status={status} setStatus={setStatus} />}
+          
         </table>
       </div>
     </>

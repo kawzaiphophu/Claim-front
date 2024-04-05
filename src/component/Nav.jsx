@@ -1,32 +1,43 @@
-import '../css/nav.css'
-import React from 'react';
+import '../css/nav.css';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
 function Nav() {
-  const sections = document.querySelectorAll("section");
-  const navs = document.querySelectorAll(".navbar-nav li a");
-  const isMainPage = window.location.pathname === '/';
-
-  if (isMainPage) {
-    const intersectionHandler = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          const navLink = document.querySelector('.navbar-nav li a[data-id="' + id + '"]');
-          if (navLink) {
-            navs.forEach(nav => nav.classList.remove('active'));
-            navLink.classList.add('active');
+  const [isMainPage,setIsMainPage] = useState("/")
+  useEffect(() => {
+    setIsMainPage(window.location.pathname)
+    if (isMainPage === "/") {
+      const sections = document.querySelectorAll("section");
+      const navs = document.querySelectorAll(".navbar-nav li a");
+  
+      const intersectionHandler = (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            const navLink = document.querySelector('.navbar-nav li a[data-id="' + id + '"]');
+            if (navLink) {
+              navs.forEach(nav => nav.classList.remove('active'));
+              navLink.classList.add('active');
+              console.log(1);
+            } else {
+              navs.forEach(nav => nav.classList.remove('active'));
+            }
           }
-        }
-      });
-    };
+        });
+      };
 
-    const observer = new IntersectionObserver(intersectionHandler, {
-      rootMargin: '-120px 120px -80% 0px',
-    });
-    sections.forEach(sec => {
-      observer.observe(sec);
-    });
-  }
+      const observer = new IntersectionObserver(intersectionHandler, {
+        rootMargin: '-120px 120px -80% 0px',
+      });
+      sections.forEach(sec => {
+        observer.observe(sec);
+      });
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, [isMainPage]);
+
   const scrollTo = (path) => {
     const section = document.getElementById(path);
     if (section) {
@@ -34,12 +45,14 @@ function Nav() {
       window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   };
-
+  const goHome = ()=>{
+    setIsMainPage(window.location.pathname)
+  }
 
   return (
     <div className={`navbar fixed-top navbar-expand-lg fs-5 m-0 p-0`}>
       <div className="container-fluid ps-3">
-        <Link className="navbar-brand py-2" to="/">
+        <Link className="navbar-brand py-2" to="/" onClick={goHome}>
           <img src="https://cdn-icons-png.freepik.com/256/10137/10137151.png?ga=GA1.1.1207387130.1709617310&" alt="" />
         </Link>
         <button className="navbar-toggler"
@@ -53,9 +66,10 @@ function Nav() {
           id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-lg-0">
             <li className="nav-item">
-              <Link data-id="home" className="nav-link mx-3 active" to="/" onClick={() => scrollTo('home')}>Home</Link>            </li>
+              <Link data-id="home" className="nav-link mx-3 active" to="/" onClick={() => {scrollTo('home'); goHome();}}>Home</Link>
+            </li>
             <li >
-              <Link data-id="about" className="nav-link mx-3" to="/" onClick={() => scrollTo('about')}>About</Link>
+              <Link data-id="about" className="nav-link mx-3" to="/" onClick={() => {scrollTo('about'); goHome();}}>About</Link>
             </li>
             <li className="nav-item dropdown">
               <Link className="nav-link mx-3"
@@ -65,7 +79,7 @@ function Nav() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
                 onClick={() => scrollTo('project')}>
-                ProJect
+                Project
               </Link>
               <ul className="dropdown-menu w-25 px-3 "
                 aria-labelledby="navbarDropdown">
@@ -76,13 +90,12 @@ function Nav() {
               </ul>
             </li>
             <li >
-              <Link data-id="contacts" className="nav-link mx-3" to="/" onClick={() => scrollTo('contacts')}>contacts</Link>
+              <Link data-id="contacts" className="nav-link mx-3" to="/" onClick={() => {scrollTo('contacts'); goHome();}}>Contacts</Link>
             </li>
           </ul>
         </nav>
       </div>
     </div>
-
   );
 }
 

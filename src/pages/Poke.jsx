@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { fetchPokemon, listPokemonSearch } from '../help/pokemon';
 import { pokemonType } from '../data/pokemonType'
+import Loading from './Loading';
 
 function Poke() {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [pokeData, setPokedata] = useState([]);
     const [pagePokemon, setPagePokemon] = useState(1);
     const [searchTerm, setSearchTerm] = useState();
@@ -95,7 +96,8 @@ function Poke() {
                         {[...Array(24)].map((_, index) => (
                             <div key={index} className='col-6 col-sm-6 col-md-4 col-lg-3 mb-4 '>
                                 <div className="card loading">
-                                    <div className="card-body" style={{ height: "200px" }}>
+                                    <div className="card-body" style={{ height: "300px" }}>
+                                        <Loading/>
                                     </div>
                                 </div>
                             </div>
