@@ -72,7 +72,7 @@ function Home() {
                   </div>
                   <div className="merged-image w-50">
                     <img className='img-1' src="https://th.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" alt="" />
-                    <img className='img-2 rounded-circle ' src={kaw} alt="Aspect ratio" />
+                    <img className='img-2 rounded-circle card-img-overlay' src={kaw} alt="Aspect ratio" />
                   </div>
                   <div className="w-25 d-flex flex-column-reverse align-items-start py-5 ">
                     <h6>JavaScript</h6>
@@ -83,7 +83,7 @@ function Home() {
                     <h5>Back-end</h5>
                   </div>
                 </div>
-                <Link to="https://github.com/kawzaiphophu"><h4 className='btn btn-light'>My github : https://github.com/kawzaiphophu</h4>
+                <Link to="https://github.com/kawzaiphophu"><h4 className='btn btn-light my-5'>My github : https://github.com/kawzaiphophu</h4>
                 </Link>
                 <h2 className='d-flex '>My Name Is Kaw </h2>
                 <p className='d-flex p-2 ps-5'>
