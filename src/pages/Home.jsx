@@ -15,6 +15,7 @@ import plant from '../img/plant.png'
 import tree from '../img/tree.png'
 import claims from '../img/claims.png'
 import pokemon from '../img/pokemon.png'
+import kaw from '../img/kaw.png'
 import SendEmail from '../component/SendEmail';
 
 function Home() {
@@ -71,7 +72,7 @@ function Home() {
                   </div>
                   <div className="merged-image w-50">
                     <img className='img-1' src="https://th.portal-pokemon.com/play/resources/pokedex/img/pokemon_bg.png" alt="" />
-                    <img className='img-2 rounded-circle ' src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?w=740&t=st=1710944863~exp=1710945463~hmac=b26c699633c3c26d22e17f4304db7b712897496dca5afdfeca2af8493d7f1fd6" alt="" />
+                    <img className='img-2 rounded-circle ' src={kaw} alt="Aspect ratio" />
                   </div>
                   <div className="w-25 d-flex flex-column-reverse align-items-start py-5 ">
                     <h6>JavaScript</h6>
