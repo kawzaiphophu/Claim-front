@@ -38,17 +38,17 @@ function Home() {
       {/* home */}
       <div className="grid-sm" >
         <section id='home' className='parallax home'>
-          <img src={hill1} alt="hill1" style={isMobile ? null : { top: `${scrollY * 1}px`, transition: 'top 0.1s,' }} />
+          <img src={hill1} alt="hill1" style={isMobile ? null : { top: `${scrollY * 1}px`, transition: 'top 1s' }} />
           <img src={hill2} alt="hill2" />
           <img src={hill3} alt="hill3" />
-          <img src={hill4} alt="hill4" style={isMobile ? null : { left: `${scrollY * -1.5}px`, transition: 'left 0.1s,' }} />
-          <img src={hill5} alt="hill5" style={isMobile ? null : { left: `${scrollY * 1.5}px`, transition: 'left 0.1s,' }} />
+          <img src={hill4} alt="hill4" style={isMobile ? null : { left: `${scrollY * -1.5}px`, transition: 'left 1s' }} />
+          <img src={hill5} alt="hill5" style={isMobile ? null : { left: `${scrollY * 1.5}px`, transition: 'left 1s' }} />
           <img src={tree} alt="tree" />
-          <div className="typing" style={isMobile ? null : { marginTop: `${scrollY * 2.5}px`, transition: 'margin-top 0.1s,' }}>
+          <div className="typing" style={isMobile ? null : { marginTop: `${scrollY * 2.5}px`, transition: 'margin-top 1s' }}>
             <h2 className="text-uppercase">Welcome&nbsp;To&nbsp;Website</h2>
           </div>
           <img src={plant} alt="plant" />
-          <img src={leaf} alt="leaf" style={isMobile ? null : { top: `${scrollY * -1.5}px`, transition: 'top 0.1s,' }} />
+          <img src={leaf} alt="leaf" style={isMobile ? null : { top: `${scrollY * -1.5}px`, transition: 'top 1s' }} />
 
         </section>
         {/* about me */}

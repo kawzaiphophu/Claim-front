@@ -3,13 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 function Nav() {
-  const [isMainPage,setIsMainPage] = useState("/")
+  const [scrollY, setScrollY] = useState(0);
   useEffect(() => {
-    setIsMainPage(window.location.pathname)
-    if (isMainPage === "/") {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
       const sections = document.querySelectorAll("section");
       const navs = document.querySelectorAll(".navbar-nav li a");
-  
       const intersectionHandler = (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -18,14 +25,13 @@ function Nav() {
             if (navLink) {
               navs.forEach(nav => nav.classList.remove('active'));
               navLink.classList.add('active');
-              console.log(1);
             } else {
               navs.forEach(nav => nav.classList.remove('active'));
             }
           }
         });
       };
-
+  
       const observer = new IntersectionObserver(intersectionHandler, {
         rootMargin: '-120px 120px -80% 0px',
       });
@@ -35,8 +41,8 @@ function Nav() {
       return () => {
         observer.disconnect();
       };
-    }
-  }, [isMainPage]);
+  }, [scrollY]);
+
 
   const scrollTo = (path) => {
     const section = document.getElementById(path);
@@ -45,14 +51,12 @@ function Nav() {
       window.scrollTo({ top: offset, behavior: 'smooth' });
     }
   };
-  const goHome = ()=>{
-    setIsMainPage(window.location.pathname)
-  }
+
 
   return (
     <div className={`navbar fixed-top navbar-expand-lg fs-5 m-0 p-0`}>
       <div className="container-fluid ps-3">
-        <Link className="navbar-brand py-2" to="/" onClick={goHome}>
+        <Link className="navbar-brand py-2" to="/">
           <img src="https://cdn-icons-png.freepik.com/256/10137/10137151.png?ga=GA1.1.1207387130.1709617310&" alt="" />
         </Link>
         <button className="navbar-toggler"
@@ -66,10 +70,10 @@ function Nav() {
           id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-lg-0">
             <li className="nav-item">
-              <Link data-id="home" className="nav-link mx-3 active" to="/" onClick={() => {scrollTo('home'); goHome();}}>Home</Link>
+              <Link data-id="home" className="nav-link mx-3 active" to="/" onClick={() => { scrollTo('home');}}>Home</Link>
             </li>
             <li >
-              <Link data-id="about" className="nav-link mx-3" to="/" onClick={() => {scrollTo('about'); goHome();}}>About</Link>
+              <Link data-id="about" className="nav-link mx-3" to="/" onClick={() => { scrollTo('about');}}>About</Link>
             </li>
             <li className="nav-item dropdown">
               <Link className="nav-link mx-3"
@@ -90,7 +94,7 @@ function Nav() {
               </ul>
             </li>
             <li >
-              <Link data-id="contacts" className="nav-link mx-3" to="/" onClick={() => {scrollTo('contacts'); goHome();}}>Contacts</Link>
+              <Link data-id="contacts" className="nav-link mx-3" to="/" onClick={() => { scrollTo('contacts');}}>Contacts</Link>
             </li>
           </ul>
         </nav>
