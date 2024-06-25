@@ -38,7 +38,7 @@ function Home() {
     <>
       {/* home */}
       <div className="grid-sm" >
-        <section id='home' className='parallax home'>
+        <section id='home' className='parallax home '>
           <img src={hill1} alt="hill1" style={isMobile ? null : { top: `${scrollY * 1}px`, transition: 'top 1s' }} />
           <img src={hill2} alt="hill2" />
           <img src={hill3} alt="hill3" />

@@ -234,6 +234,7 @@ header {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    width: auto;
 
 }
 
@@ -266,7 +267,7 @@ header {
 
 @media only screen and (min-width: 768px) and (max-width: 1919px) {
     .parallax img {
-        width: auto;
+width: 100vw;
     }
 
     .typing h2 {
